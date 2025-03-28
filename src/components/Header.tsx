@@ -1,20 +1,12 @@
 "use client";
-import {
-  Bell,
-  Globe,
-  Maximize,
-  Menu,
-  Search,
-  Settings,
-  SunMoon,
-  X,
-} from "lucide-react";
+import { Bell, Maximize, Menu, Search, Settings, X } from "lucide-react";
 import React, { useState, useRef, useEffect } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { SelectDemo } from "./SelectDemo";
 import { ThemeToggle } from "./ThemeToggle";
+import { UserMenu } from "./MenubarDemo";
 
 const Header = ({
   isSidebarExpanded,
@@ -101,16 +93,7 @@ const Header = ({
           <div className="relative flex items-center gap-1 p-2 bg-gray-800 rounded-full cursor-pointer w-fit border border-gray-700">
             <Bell />
           </div>
-          <div className="flex gap-2 items-center justify-center">
-            <Avatar className="w-10 h-10">
-              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn"  />
-              <AvatarFallback>Avatar</AvatarFallback>
-            </Avatar>
-            <div className="flex flex-col gap-0">
-              <p className="text-sm">Tailor</p>
-              <p className="text-xs">Designer</p>
-            </div>
-          </div>
+          <UserMenu/>
           <div className="relative flex items-center gap-1 p-2 bg-gray-800 rounded-full cursor-pointer w-fit border border-gray-700">
             <Maximize />
           </div>

@@ -1,5 +1,6 @@
 import { AccordionDemo } from "@/components/Accordian";
 import { DrawerDemo } from "@/components/DrawerDemo";
+import { UserMenu } from "@/components/MenubarDemo";
 import { SelectDemo } from "@/components/SelectDemo";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import React from "react";
@@ -17,6 +18,7 @@ const page = () => {
       {/* <DrawerDemo/>
       <SelectDemo/> */}
       {/* <ThemeToggle/> */}
+      <UserMenu/>
     </div>
   );
 };
