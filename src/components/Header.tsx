@@ -1,7 +1,6 @@
 "use client";
 import { Bell, Maximize, Menu, Search, Settings, X } from "lucide-react";
 import React, { useState, useRef, useEffect } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { SelectDemo } from "./SelectDemo";
@@ -93,7 +92,7 @@ const Header = ({
           <div className="relative flex items-center gap-1 p-2 bg-gray-800 rounded-full cursor-pointer w-fit border border-gray-700">
             <Bell />
           </div>
-          <UserMenu/>
+          <UserMenu />
           <div className="relative flex items-center gap-1 p-2 bg-gray-800 rounded-full cursor-pointer w-fit border border-gray-700">
             <Maximize />
           </div>

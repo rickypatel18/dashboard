@@ -14,11 +14,18 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div className="flex min-h-screen">
-      <Sidebar isExpanded={isSidebarExpanded} toggleSidebar={toggleSidebar} isManuallyExpanded={isManuallyExpanded} />
+      <Sidebar
+        isExpanded={isSidebarExpanded}
+        toggleSidebar={toggleSidebar}
+        isManuallyExpanded={isManuallyExpanded}
+      />
 
       <div className="flex-1 pl-20">
-        <Header isSidebarExpanded={isSidebarExpanded} toggleSidebar={toggleSidebar} />
-        <main className="mt-16 p-0 h-[calc(100vh-5rem)] ">{children}</main>
+        <Header
+          isSidebarExpanded={isSidebarExpanded}
+          toggleSidebar={toggleSidebar}
+        />
+        <main className="mt-16 p-0 min-h-[calc(100vh-5rem)] bg-[#0f1725]">{children}</main>
       </div>
     </div>
   );
