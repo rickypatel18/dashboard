@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   LayoutDashboard,
   NotebookText,
@@ -53,6 +53,7 @@ const Sidebar = ({
   toggleSidebar: () => void;
   isManuallyExpanded: boolean;
 }) => {
+  const sidebarRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname();
   const [isHovered, setIsHovered] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>("Dashboard");
@@ -120,6 +121,26 @@ const Sidebar = ({
     });
   }, [pathname]);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isExpanded &&
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target as Node)
+      ) {
+        toggleSidebar();
+      }
+    };
+
+    if (isExpanded) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isExpanded]);
+
   const handleToggle = (menuName: string) => {
     setOpenMenu((prev) => (prev === menuName ? null : menuName));
   };
@@ -142,8 +163,9 @@ const Sidebar = ({
 
   return (
     <div
-      className={`fixed left-0 top-0 h-screen bg-[#110f0f] text-white z-30 transition-all duration-300 ${
-        isExpanded || isHovered ? "w-64" : "w-20"
+    ref={sidebarRef}
+      className={` fixed -left-20 lg:left-0 w-20 top-0 h-screen bg-[#110f0f] text-white z-50 transition-all duration-100 ${
+        isExpanded || isHovered ? "w-64 left-0" : "w-0"
       }`}
       onMouseEnter={() => {
         if (!isManuallyExpanded) setIsHovered(true);
@@ -159,7 +181,7 @@ const Sidebar = ({
         )}
       </div>
 
-      <div className="p-4">
+      <div className="p-4 ">
         {menu.map((item, index) => (
           <div key={index} className="mb-2">
             <button

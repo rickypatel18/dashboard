@@ -71,16 +71,35 @@ const Header = ({
       </div>
 
       <div
-        className={`fixed top-0 transition-all duration-300 bg-[#110f0f] h-16 flex items-center justify-between pl-5 pr-10 border-b border-[#5f636950] z-10 ${
+        className={`fixed top-0 transition-all duration-100 bg-[#110f0f] h-16 flex items-center justify-between pl-5 pr-10  left-0 lg:left-20 w-full z-10  ${
           isSidebarExpanded
-            ? "left-64 w-[calc(100%-16rem)]"
-            : "left-20 w-[calc(100%-5rem)]"
+            ? "lg:left-64 lg:w-[calc(100%-16rem)]"
+            : "lg:left-20 lg:w-[calc(100%-5rem)]"
         }`}
       >
-        <button onClick={toggleSidebar} className="bg-transparent text-white">
-          {isSidebarExpanded ? <X /> : <Menu />}
-        </button>
-        <div className="flex gap-10 items-center justify-center">
+        <div className="flex flex-row">
+          {!isSidebarExpanded ? (
+            // Show logo on small screens when sidebar is collapsed
+            <div className="flex lg:hidden">
+              <img src="/logo.svg" alt="Logo" width={30} height={30} />
+            </div>
+          ) : (
+            // Show full logo when expanded
+            <div className="flex flex-row">
+              <div className="flex lg:hidden">
+                <img src="/logo.svg" alt="Logo" width={30} height={30} />
+                <div className="text-2xl pb-2">gnext</div>
+              </div>
+            </div>
+          )}
+
+          {/* Single Toggle Button */}
+          <button onClick={toggleSidebar} className="bg-transparent text-white">
+            {isSidebarExpanded ? <X /> : <Menu />}
+          </button>
+        </div>
+
+        <div className="flex gap-0 lg:gap-10 items-center justify-center">
           <button
             onClick={() => setIsSearchOpen(true)}
             className="relative flex items-center gap-1 p-2 bg-gray-800 rounded-full cursor-pointer w-fit border border-gray-700"

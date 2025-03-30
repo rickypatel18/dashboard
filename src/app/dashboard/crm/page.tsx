@@ -29,7 +29,7 @@ const sampleData2 = [
 
 const page = () => {
   return (
-    <div className=" flex flex-col gap-20 border p-0 lg:p-20">
+    <div className=" flex flex-col gap-20 border ">
       <div className="border-[0.5px] border-[#5f63692f]">
         <Chart1 />
       </div>
