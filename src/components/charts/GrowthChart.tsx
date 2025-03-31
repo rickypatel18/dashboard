@@ -16,17 +16,17 @@ interface ChartAreaProps {
   fillColor?: string;
 }
 
-const ChartArea: React.FC<ChartAreaProps> = ({
+const GrowthChart: React.FC<ChartAreaProps> = ({
   data,
   strokeColor = "#8884d8",
   fillColor = "#8884d8",
 }) => {
   return (
-    <div className=" mx-auto p-4 bg-gray-900 rounded-lg shadow-lg">
+    <div className=" bg-gray-900 rounded-xl p-1 lg:p-2  w-full">
       <ResponsiveContainer width="100%" height={400}>
         <AreaChart
           data={data}
-          margin={{ top: 20, right: 20, left: -10, bottom: 10 }}
+          margin={{ top: 20, right: 10, left: -10, bottom: 10 }}
         >
           <CartesianGrid strokeDasharray="3 3" stroke="#444" />
           <XAxis dataKey="name" stroke="#ddd" />
@@ -59,4 +59,4 @@ const ChartArea: React.FC<ChartAreaProps> = ({
   );
 };
 
-export default ChartArea;
+export default GrowthChart;

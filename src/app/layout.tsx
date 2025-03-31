@@ -48,12 +48,20 @@ export default function RootLayout({
               isManuallyExpanded={isManuallyExpanded}
             />
 
-            <div className="flex-1 pl-0 lg:pl-20">
+            <div
+              className={`flex-1 pl-0 lg:pl-20 ${
+                isSidebarExpanded
+                  ? "left-0 lg:left-64 w-[calc(100%-0rem)] lg:w-[calc(100%-16rem)]"
+                  : "left-0 lg:left-20 w-[calc(100%-0rem)] lg:w-[calc(100%-5rem)]"
+              }`}
+            >
               <Header
                 isSidebarExpanded={isSidebarExpanded}
                 toggleSidebar={toggleSidebar}
               />
-              <main className="mt-16 px-4 py-4 lg:px-20 xl:px-25 2xl:px-30  min-h-[calc(100vh-5rem)] bg-[#5a58580b]">
+              <main
+                className={`mt-16 px-0 py-4 lg:px-6 xl:px-8 2xl:px-10 w-[100%] min-h-[calc(100vh-5rem)] bg-[#5a58580b]`}
+              >
                 {children}
               </main>
             </div>

@@ -42,13 +42,13 @@ export default function UserTable() {
   }, [inView, fetchUsers]);
 
   return (
-    <Card className="w-full max-w-full mx-auto p-4 rounded-lg shadow-md bg-white dark:bg-gray-900">
+    <Card className="table-layout w-full max-w-full mx-auto p-4 rounded-xl shadow-md bg-white dark:bg-gray-900">
       <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
         Users List
       </h2>
 
-      <div className="overflow-hidden border rounded-lg">
-        <div className="overflow-y-auto max-h-[700px]">
+      <div className="overflow-hidden border rounded-xl">
+        <div className="overflow-y-auto min-h-[700px] scrollbar-hide">
           <table className="w-full border-collapse">
             <thead className="sticky top-0 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100">
               <tr>

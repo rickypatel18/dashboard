@@ -15,7 +15,7 @@ export default function TinyChart({
   dataKey,
   color = "#8884d8",
   height = 70,
-  width = 100,
+  width = 90,
 }: TinyChartProps) {
   return (
     <LineChart width={width} height={height} data={data}>

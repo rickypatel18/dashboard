@@ -42,17 +42,11 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  color: #ffffff;
-  background-color: #222121;
-}
+
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: #eedada;
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -86,8 +80,8 @@ body {
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
+  --background: #161f72;
+  --foreground:#f81212;
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
@@ -104,11 +98,13 @@ body {
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
+  --chart-color:#4facfe
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
+  --chart-gradient: linear-gradient(to bottom, #4facfe, #00f2fe);
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.488 0.243 264.376);
@@ -120,11 +116,98 @@ body {
 }
 
 @layer base {
+  /* Apply global border and outline styles */
   * {
     @apply border-border outline-ring/50;
   }
+
+  /* Apply theme-based background and text colors */
   body {
+    @apply bg-background text-foreground transition-colors duration-300;
+    font-family: var(--font-sans);
+    @apply antialiased;
+  }
+
+  /* Remove default margin, padding, and ensure box-sizing consistency */
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Selection styles */
+  ::selection {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  body::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  body::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    @apply bg-primary rounded-full;
+  }
+  
+  body::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary-foreground;
+  }
+
+  /* Button & Link Hover Effects */
+  button, a {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  button:focus-visible, a:focus-visible {
+    @apply ring-2 ring-ring ring-offset-2;
+  }
+
+  button:hover, a:hover {
+    @apply opacity-80;
+  }
+
+  /* Dark Mode Enhancements */
+  .dark body {
     @apply bg-background text-foreground;
+  }
+
+  /* Disable outline on active clicks */
+  *:focus:not(:focus-visible) {
+    outline: none;
   }
 }
 
+
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: background-color 0.3s, color 0.3s;
+}
+.dark {
+  --background:#060929;
+  --foreground: oklch(0.985 0 0);
+}
+body::-webkit-scrollbar {
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  width: none;
+}
+.scrollbar-hide{
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  width: none;
+}

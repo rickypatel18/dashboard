@@ -38,7 +38,7 @@ const renderCustomizedLabel = (props: any) => {
 const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-gray-800 text-white text-sm px-3 py-1 rounded-lg shadow-lg">
+      <div className="bg-gray-800 text-white text-sm px-3 py-1 rounded-xl ">
         <p className="font-semibold">{payload[0].payload.name}</p>
         <p>UV: {payload[0].value}</p>
         <p>PV: {payload[1].value}</p>
@@ -50,21 +50,23 @@ const CustomTooltip = ({ active, payload }: any) => {
 
 const ProfitRevenueChart: React.FC<ChartProps> = ({
   data,
-  barColors = { pv: "#8884d8", uv: "#82ca9d" },
+  barColors = { pv: "#8884d8", uv: "#4facfe" },
 }) => {
   return (
-    <div className="w-full mx-auto p-4 bg-gray-900 rounded-lg shadow-lg h-full">
-      <ResponsiveContainer width="100%" >
+    <div className="w-full mx-auto lg:pr-3  bg-white dark:bg-gray-900 rounded-xl h-full">
+      <ResponsiveContainer width="100%">
         <BarChart
           data={data}
-          margin={{ top: 30, right: 20, left: 20, bottom: 10 }} // Added top margin
+          margin={{ top: 50, right: 4, left: 0, bottom: 10 }} // Added top margin
         >
           <CartesianGrid strokeDasharray="3 3" stroke="#444" />
           <XAxis dataKey="name" stroke="#ddd" />
-          <YAxis stroke="#ddd" domain={['auto', 'dataMax + 500']} /> {/* Extra space at top */}
-          <Tooltip content={<CustomTooltip />} cursor={{ fill: "transparent" }} />
+          <YAxis stroke="#ddd" domain={["auto"]} /> {/* Extra space at top */}
+          <Tooltip
+            content={<CustomTooltip />}
+            cursor={{ fill: "transparent" }}
+          />
           <Legend wrapperStyle={{ color: "#fff" }} />
-
           <Bar dataKey="pv" fill={barColors.pv} radius={[8, 8, 0, 0]}>
             <LabelList dataKey="pv" content={renderCustomizedLabel} />
           </Bar>

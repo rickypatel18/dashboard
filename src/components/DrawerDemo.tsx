@@ -30,7 +30,7 @@ export function DrawerDemo() {
       <DrawerTrigger asChild>
         <Button variant="outline">Open Drawer</Button>
       </DrawerTrigger>
-      <DrawerContent>
+      <DrawerContent className="bg-background text-foreground transition-colors">
         <div className="mx-auto w-full max-w-sm">
           <DrawerHeader>
             <DrawerTitle>Move Goal</DrawerTitle>
@@ -67,9 +67,6 @@ export function DrawerDemo() {
                 <span className="sr-only">Increase</span>
               </Button>
             </div>
-            <div className="mt-3 h-[120px]">
-           
-            </div>
           </div>
           <DrawerFooter>
             <Button>Submit</Button>
@@ -80,5 +77,5 @@ export function DrawerDemo() {
         </div>
       </DrawerContent>
     </Drawer>
-  )
+  );
 }

@@ -28,19 +28,19 @@ export function UserMenu() {
         onClick={() => setIsOpen((prev) => !prev)}
         className="flex gap-2 items-center cursor-pointer"
       >
-        <Avatar className="w-10 h-10">
+        <Avatar className="w-9 h-9 lg:w-10 lg:h-10">
           <Image
             src="https://imgv3.fotor.com/images/slider-image/A-clear-close-up-photo-of-a-woman.jpg"
             alt="@shadcn"
             width={50}
             height={50}
-            className="rounded-full bg-contain"
+            className="rounded-full bg-contain w-20"
             // onError={(e) => (e.currentTarget.src = "/fallback-avatar.png")}  local image of user
             priority
           />
           <AvatarFallback>Avatar</AvatarFallback>
         </Avatar>
-        <div className="flex flex-col gap-0">
+        <div className="hidden lg:flex lg:flex-col gap-0 ">
           <p className="text-sm">Tailor</p>
           <p className="text-xs">Designer</p>
         </div>
@@ -48,17 +48,17 @@ export function UserMenu() {
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute right-0 mt-3 w-48 bg-[#1a1919] text-white rounded-lg z-50 overflow-hidden transition-all duration-300">
+        <div className="absolute right-0 mt-3 w-48 bg-[#1a1919] text-white rounded-xl z-50 overflow-hidden transition-all duration-300">
           <ul className="py-2 flex flex-col">
-            <li className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-gray-700 transition rounded-lg">
+            <li className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-gray-700 transition rounded-xl">
               <CircleUser className="w-5 h-5 text-purple-500" />
               <p className="text-sm">Profile</p>
             </li>
-            <li className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-gray-700 transition rounded-lg">
+            <li className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-gray-700 transition rounded-xl">
               <Bolt className="w-5 h-5 text-yellow-400" />
               <p className="text-sm">Settings</p>
             </li>
-            <li className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-gray-700 transition rounded-lg">
+            <li className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-gray-700 transition rounded-xl">
               <Inbox className="w-5 h-5 text-green-500" />
               <p className="text-sm flex-1">Inbox</p>
               <div className="relative">
@@ -68,7 +68,7 @@ export function UserMenu() {
                 <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 rounded-full"></span>
               </div>
             </li>
-            <li className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-red-600 transition rounded-lg">
+            <li className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-red-600 transition rounded-xl">
               <LogOut className="w-5 h-5 text-red-400" />
               <p className="text-sm">Logout</p>
             </li>

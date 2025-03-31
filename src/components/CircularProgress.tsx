@@ -1,36 +1,31 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import "@/styles/wave.css";
 
 interface WaterProgressProps {
   percentage: number; // Value from 0 to 100
   size?: number; // Circle size
-  color?: string; // Water color
+  color?: string; // Wave color
   bgColor?: string; // Background color
-  speed?: number; // Animation speed in seconds
 }
 
-const WaterProgress: React.FC<WaterProgressProps> = ({
+const WaterProgress = ({
   percentage,
   size = 150,
-  color = "#009acd",
+  color = " #4facfe",
   bgColor = "#222",
-  speed = 3,
-}) => {
-  const [waveOffset, setWaveOffset] = useState(0);
+}: WaterProgressProps) => {
   const fillHeight = (100 - percentage) * 0.8; // Convert percentage to wave height
-
-  // Wave movement effect
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setWaveOffset((prev) => (prev >= 100 ? 0 : prev + 1));
-    }, speed * 10);
-    return () => clearInterval(interval);
-  }, [speed]);
 
   return (
     <div
       className="relative flex items-center justify-center"
-      style={{ width: size, height: size }}
+      style={{
+        width: size,
+        height: size,
+        borderRadius: "50%",
+        overflow: "hidden",
+      }}
     >
       {/* Background Circle */}
       <svg width={size} height={size} viewBox="0 0 100 100">
@@ -38,8 +33,8 @@ const WaterProgress: React.FC<WaterProgressProps> = ({
           cx="50"
           cy="50"
           r="45"
-          stroke={bgColor}
-          strokeWidth="4"
+          stroke="rgba(255, 255, 255, 0.1)"
+          strokeWidth="3"
           fill="transparent"
         />
       </svg>
@@ -55,36 +50,31 @@ const WaterProgress: React.FC<WaterProgressProps> = ({
           <circle cx="50" cy="50" r="45" />
         </clipPath>
         <g clipPath="url(#wave-clip)">
+          {/* Two overlapping waves for a realistic effect */}
           <path
             d={`M 0 ${fillHeight + 10} 
                 Q 25 ${fillHeight - 5}, 50 ${fillHeight + 5} 
                 T 100 ${fillHeight + 10} 
                 V 100 H 0 Z`}
             fill={color}
-            className="wave-animation"
-            style={{
-              transform: `translateX(${waveOffset}px)`,
-              transition: "transform 0.2s linear",
-            }}
+            className="wave wave1"
+          />
+          <path
+            d={`M 0 ${fillHeight + 15} 
+                Q 25 ${fillHeight}, 50 ${fillHeight + 10} 
+                T 100 ${fillHeight + 15} 
+                V 100 H 0 Z`}
+            fill={color}
+            className="wave wave2"
+            style={{ opacity: 0.6 }}
           />
         </g>
       </svg>
 
       {/* Percentage Display */}
-      <div className="absolute text-white font-bold text-xl">{percentage}%</div>
-
-      {/* Wave Animation (CSS) */}
-      <style>
-        {`
-          @keyframes waveMove {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(5px); transform: translateY(5px); }
-          }
-          .wave-animation {
-            animation: waveMove ${speed}s infinite linear ;
-          }
-        `}
-      </style>
+      <div className="absolute text-white font-bold text-2xl">
+        {percentage}%
+      </div>
     </div>
   );
 };

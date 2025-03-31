@@ -14,7 +14,7 @@ export function SelectDemo() {
   };
 
   return (
-    <label className="relative flex items-center gap-1 bg-gray-800 rounded-full cursor-pointer w-fit border border-gray-700">
+    <label className="relative flex items-center gap-0 bg-gray-800 rounded-full cursor-pointer w-fit ">
       <input
         type="checkbox"
         checked={selectedIndex === 1}
@@ -23,32 +23,34 @@ export function SelectDemo() {
       />
 
       <div
-        className={`absolute top-1/2 transform -translate-y-1/2 w-8 h-8 rounded-full bg-white border-1 border-black transition-all duration-500 ${
-          selectedIndex === 1 ? "translate-x-12" : "translate-x-1"
+        className={`absolute top-1/2 transform -translate-y-1/2 w-6 h-6 lg:w-8 lg:h-8 rounded-full bg-white  transition-all duration-500 ${
+          selectedIndex === 1
+            ? "translate-x-10.5 lg:translate-x-9.5"
+            : "translate-x-1.5 lg:translate-x-0.5"
         }`}
       ></div>
 
       <div
-        className={`relative w-10 h-10 flex items-center justify-center rounded-full transition-all duration-500 ${
+        className={`relative w-9 h-9 flex items-center justify-center rounded-full transition-all duration-500 ${
           selectedIndex === 0 ? "scale-110 opacity-100" : "opacity-50"
         }`}
       >
         <img
           src={flags[0].src}
           alt={flags[0].label}
-          className="w-5 h-5 rounded-full"
+          className="w-4 h-4 lg:w-5 lg:h-5 rounded-full"
         />
       </div>
 
       <div
-        className={`relative w-10 h-10 flex items-center justify-center rounded-full transition-all duration-500 ${
+        className={`relative w-9 h-9 flex items-center justify-center rounded-full transition-all duration-500 ${
           selectedIndex === 1 ? "scale-110 opacity-100" : "opacity-50"
         }`}
       >
         <img
           src={flags[1].src}
           alt={flags[1].label}
-          className="w-5 h-5 rounded-full"
+          className="w-4 h-4 lg:w-5 lg:h-5 rounded-full"
         />
       </div>
     </label>

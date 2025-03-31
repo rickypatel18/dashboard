@@ -2,12 +2,15 @@
 import React, { useCallback, useState } from "react";
 import { PieChart, Pie, Sector, Cell } from "recharts";
 
-const data = [
-  { name: "Laptop", value: 1624, color: "#FF6384" },
-  { name: "Mobile", value: 1267, color: "#36A2EB" },
-  { name: "Pc", value: 1153, color: "#FFCE56" },
-  { name: "Tablet", value: 679, color: "#4BC0C0" },
-];
+interface Data {
+  name: string;
+  value: number;
+  color: string;
+}
+
+interface ChartPieProps {
+  data: Data[]; // Accept data as a prop
+}
 
 const renderActiveShape = (props: any) => {
   const RADIAN = Math.PI / 180;
@@ -107,16 +110,16 @@ const renderActiveShape = (props: any) => {
   );
 };
 
-export default function ChartPie() {
+const ChartPie = ({ data }: ChartPieProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const onPieEnter = useCallback((_: any, index: number) => {
+  const onPieEnter = useCallback((_: unknown, index: number) => {
     setActiveIndex(index);
   }, []);
 
   return (
-    <div className="flex justify-center items-center bg-gray-900  rounded-lg shadow-md ">
-      <PieChart width={500} height={450}>
+    <div className="flex justify-center items-center w-full h-full bg-gray-900 rounded-xl shadow-md">
+      <PieChart width={500} height={390}>
         <Pie
           activeIndex={activeIndex}
           activeShape={renderActiveShape}
@@ -133,4 +136,6 @@ export default function ChartPie() {
       </PieChart>
     </div>
   );
-}
+};
+
+export default ChartPie;

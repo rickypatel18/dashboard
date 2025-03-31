@@ -1,0 +1,21 @@
+@keyframes waveMove {
+  0% {
+    transform: translateX(0) translateY(5px);
+  }
+  50% {
+    transform: translateX(6px) translateY(-7px);
+  }
+  100% {
+    transform: translateX(4px) translateY(5px);
+  }
+}
+
+.wave {
+  animation: waveMove 4s infinite ease-in-out alternate;
+}
+.wave1 {
+  animation-delay: 0s;
+}
+.wave2 {
+  animation-delay: 1s;
+}

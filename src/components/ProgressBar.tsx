@@ -8,54 +8,46 @@ interface ProgressBarProps {
   color?: string;
 }
 
-const ProgressBar: React.FC<ProgressBarProps> = ({
-  value,
-  max,
-  label,
-  color = "bg-blue-500",
-}) => {
+interface ProgressData {
+  label: string;
+  value: number;
+  max: number;
+  color: string;
+}
+
+const ProgressBar = ({ value, max, label, color = "bg-blue-500" }: ProgressBarProps) => {
   const percentage = (value / max) * 100;
 
   return (
-    <div className="w-full">
+    <div className="w-full space-y-2">
       {/* Label */}
-      <div className="flex justify-between text-sm font-medium text-gray-300 mb-1">
+      <div className="flex justify-between text-sm font-medium text-gray-300">
         <span>{label}</span>
-        <span>
+        <span className="text-gray-400">
           {value} / {max}
         </span>
       </div>
 
       {/* Progress Bar */}
-      <div className="w-full bg-gray-800 rounded-lg h-4 relative overflow-hidden">
+      <div className="w-full bg-gray-800 rounded-full h-5 shadow-md relative overflow-hidden">
         <div
-          className={`h-full ${color} rounded-lg transition-all duration-500`}
-          style={{ width: `${percentage}%` }}
+          className={`h-full ${color} rounded-full transition-all duration-700 ease-in-out`}
+          style={{
+            width: `${percentage}%`,
+            backgroundImage: "linear-gradient(to right, #4facfe, #00f2fe)",
+          }}
         ></div>
       </div>
     </div>
   );
 };
 
-// ✅ Multi-progress bars component
-const MultiProgressBars = () => {
-  const progressData = [
-    { label: "Task 1", value: 110, max: 150, color: "bg-blue-500" },
-    { label: "Task 2", value: 2000, max: 3000, color: "bg-green-500" },
-    { label: "Task 3", value: 428, max: 545, color: "bg-yellow-500" },
-    { label: "Task 4", value: 600, max: 800, color: "bg-red-500" }, // Example extra
-  ];
-
+const MultiProgressBars = ({ progressData }: { progressData: ProgressData[] }) => {
   return (
-    <div className="w-full max-w-md mx-auto space-y-4 bg-gray-900 p-6 rounded-lg shadow-lg">
+    <div className="w-full max-w-md mx-auto p-6 bg-gray-900 rounded-xl shadow-xl space-y-5">
+      <h2 className="text-xl font-bold text-white text-center">Progress Overview</h2>
       {progressData.map((item, index) => (
-        <ProgressBar
-          key={index}
-          label={item.label}
-          value={item.value}
-          max={item.max}
-          color={item.color}
-        />
+        <ProgressBar key={index} {...item} />
       ))}
     </div>
   );

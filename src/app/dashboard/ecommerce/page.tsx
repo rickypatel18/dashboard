@@ -2,9 +2,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div className='border'>
-      ecommerce
-    </div>
+    <div>Ecommerce page</div>
   )
 }
 

@@ -1,6 +1,6 @@
 import Card from "@/components/card/Card";
-import Chart1 from "@/components/charts/Chart1";
-import ChartArea from "@/components/charts/GrowthChart";
+import MonthlyUserChart from "@/components/charts/MonthlyUserChart";
+import GrowthChart from "@/components/charts/GrowthChart";
 import ChartPie from "@/components/charts/PieChart";
 import ProfitRevenueChart from "@/components/charts/ProfitRevenueChart";
 import CircularProgress from "@/components/CircularProgress";
@@ -18,55 +18,85 @@ const sampleData = [
 ];
 
 const sampleData2 = [
-  { name: "Page A", uv: 4000, pv: 2400, amt: 2400 },
-  { name: "Page B", uv: 3000, pv: 1398, amt: 2210 },
-  { name: "Page C", uv: 2000, pv: 9800, amt: 2290 },
-  { name: "Page D", uv: 2780, pv: 3908, amt: 2000 },
-  { name: "Page E", uv: 1890, pv: 4800, amt: 2181 },
-  { name: "Page F", uv: 2390, pv: 3800, amt: 2500 },
-  { name: "Page G", uv: 3490, pv: 4300, amt: 2100 },
+  { name: "1-2", uv: 4000, pv: 2400, amt: 2400 },
+  { name: "3-4", uv: 3000, pv: 1398, amt: 2210 },
+  { name: " 5-6", uv: 2000, pv: 9800, amt: 2290 },
+  { name: " 7-8", uv: 2780, pv: 3908, amt: 2000 },
+  { name: " 9-10", uv: 1890, pv: 4800, amt: 2181 },
+  { name: " 11-12", uv: 2390, pv: 3800, amt: 2500 },
 ];
+
+const progressData = [
+  { label: "Task 1", value: 110, max: 150, color: "bg-blue-500" },
+  { label: "Task 2", value: 1379, max: 3000, color: "bg-green-500" },
+  { label: "Task 3", value: 428, max: 545, color: "bg-yellow-500" },
+  { label: "Task 4", value: 589, max: 800, color: "bg-red-500" },
+];
+
+const PieChartData = [
+  { name: "Laptop", value: 1624, color: "#FF6384" },
+  { name: "Mobile", value: 1267, color: "#36A2EB" },
+  { name: "Pc", value: 1153, color: "#FFCE56" },
+  { name: "Tablet", value: 679, color: "#4BC0C0" },
+];
+
+const averagePercentage = (
+  progressData.reduce((acc, task) => acc + (task.value / task.max) * 100, 0) /
+  progressData.length
+).toFixed(2);
 
 const page = () => {
   return (
-    <div className=" flex flex-col gap-20 border ">
-      <div className="border-[0.5px] border-[#5f63692f]">
-        <Chart1 />
+    <div className="flex flex-col gap-10 p-4">
+      <div className="">
+        <MonthlyUserChart />
       </div>
-      <Card />
 
-      <div className="grid grid-cols-3 grid-rows-3 gap-4">
-        {/* Each grid item has a fixed height of 480px */}
-        <div className="col-span-2 bg-gray-300 p-4 h-[480px]">
-          <ProfitRevenueChart
-            data={sampleData}
-            barColors={{ pv: "#ff7300", uv: "#36a2eb" }}
-          />
-        </div>
-        <div className="bg-gray-400 p-4 h-[480px] overflow-hidden">
-          <ChartPie />
-        </div>
-        <div className="col-span-2 row-span-2 bg-gray-500 p-4 h-[960px]">
-          <LeadTable />
-        </div>
-        <div className="bg-gray-500 p-4 h-[480px]">
-          {" "}
-          <div className="flex flex-col items-center space-y-4 p-8 bg-gray-900 min-h-screen">
-            <h2 className="text-xl font-bold text-white">User Growth</h2>
-            <CircularProgress percentage={35} />
-            <MultiProgressBars />
+      <div className="cards">
+        <Card />
+      </div>
+
+      {/* Responsive Grid Layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-6">
+        {/* First Column (Stacked Lead Table & Profit Revenue Chart) */}
+        <div className="flex flex-col gap-6">
+          <div className="table-layout bg-white dark:bg-gray-900 rounded-xl flex justify-center items-center">
+            <LeadTable />
+          </div>
+          <div className="bg-white dark:bg-gray-900 rounded-xl flex flex-col justify-center items-center py-5 h-[600px]">
+            <h2 className="text-xl font-bold text-white">Profit revenue </h2>
+            <ProfitRevenueChart
+              data={sampleData}
+              barColors={{ pv: "#ff7300", uv: "#36a2eb" }}  
+            />
           </div>
         </div>
-        <div className="bg-gray-500 p-4 h-[480px]">
-          <ChartArea
-            data={sampleData2}
-            strokeColor="#00c49f"
-            fillColor="#00c49f"
-          />
+
+        {/* Second Column (Three Elements in One Row) */}
+        <div className="grid grid-cols-1 gap-4">
+          <div className="bg-white dark:bg-gray-900 rounded-xl justify-center flex flex-col items-center py-5 px-3">
+            <h2 className="text-xl font-bold text-white">User Growth</h2>
+            <CircularProgress percentage={Number(averagePercentage)} />
+            <MultiProgressBars progressData={progressData} />
+          </div>
+          <div className="bg-white dark:bg-gray-900 py-5 rounded-xl flex flex-col justify-center items-center">
+            <h2 className="text-xl font-bold text-white"> Pie chart</h2>
+            <ChartPie data={PieChartData}/>
+          </div>
+          <div className="bg-white dark:bg-gray-900 rounded-xl flex flex-col justify-center py-5 items-center w-full">
+            <h2 className="text-xl font-bold text-white">Area chart</h2>
+            <GrowthChart
+              data={sampleData2}
+              strokeColor=" #4facfe"
+              fillColor=" #4facfe"
+            />
+          </div>
         </div>
       </div>
 
-      <UserTable />
+      <div className="table-layout">
+        <UserTable />
+      </div>
     </div>
   );
 };
