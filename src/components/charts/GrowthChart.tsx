@@ -22,7 +22,7 @@ const GrowthChart: React.FC<ChartAreaProps> = ({
   fillColor = "#8884d8",
 }) => {
   return (
-    <div className=" bg-gray-900 rounded-xl p-1 lg:p-2  w-full">
+    <div className=" dark:bg-gray-900 rounded-xl p-1 lg:p-2  w-full">
       <ResponsiveContainer width="100%" height={400}>
         <AreaChart
           data={data}

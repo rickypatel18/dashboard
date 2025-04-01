@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { useTheme } from "next-themes"; // ✅ Import next-themes
 import {
   BarChart,
   Bar,
@@ -12,9 +13,9 @@ import {
 } from "recharts";
 
 interface MonthlyUserChartProps {
-  apiUrl?: string; // Allow dynamic API endpoint
-  barColor?: string; // Allow dynamic bar color
-  gradientId?: string; // Gradient ID
+  apiUrl?: string;
+  barColor?: string;
+  gradientId?: string;
 }
 
 const MonthlyUserChart: React.FC<MonthlyUserChartProps> = ({
@@ -22,6 +23,9 @@ const MonthlyUserChart: React.FC<MonthlyUserChartProps> = ({
   barColor = "#4facfe",
   gradientId = "barGradient",
 }) => {
+  const { theme } = useTheme(); // ✅ Get the theme
+  const isDarkMode = theme === "dark"; // ✅ Determine if dark mode is active
+
   const [chartData, setChartData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -42,11 +46,7 @@ const MonthlyUserChart: React.FC<MonthlyUserChartProps> = ({
         setChartData(data);
       } catch (err: unknown) {
         console.error("Error fetching data:", err);
-        if (err instanceof Error) {
-          setError(err.message);
-        } else {
-          setError("An unknown error occurred");
-        }
+        setError(err instanceof Error ? err.message : "An unknown error occurred");
       } finally {
         setLoading(false);
       }
@@ -74,8 +74,8 @@ const MonthlyUserChart: React.FC<MonthlyUserChartProps> = ({
   if (error) return <p className="text-red-500 text-center">Error: {error}</p>;
 
   return (
-    <div className="py-2 bg-gray-900 rounded-xl flex flex-col gap-5">
-      <h2 className="text-white text-lg font-semibold text-center">
+    <div className="py-2 bg-white dark:bg-gray-900 rounded-xl flex flex-col gap-5">
+      <h2 className="dark:text-white text-lg font-semibold text-center">
         Monthly Visitors
       </h2>
       <ResponsiveContainer width="100%" height={400}>
@@ -84,10 +84,19 @@ const MonthlyUserChart: React.FC<MonthlyUserChartProps> = ({
           barGap={barSpacing.barGap}
           barCategoryGap={barSpacing.barCategoryGap}
         >
+          {/* ✅ Define the gradient dynamically */}
           <defs>
             <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#4facfe" stopOpacity={0.9} />
-              <stop offset="95%" stopColor="#4facfe" stopOpacity={0.3} />
+              <stop 
+                offset="5%" 
+                stopColor={isDarkMode ? "#0d3b66" : "#1c94e4"} 
+                stopOpacity={1} 
+              />
+              <stop 
+                offset="95%" 
+                stopColor={isDarkMode ? "#092540" : "#1c94e4"} 
+                stopOpacity={0.8} 
+              />
             </linearGradient>
           </defs>
 
@@ -107,7 +116,7 @@ const MonthlyUserChart: React.FC<MonthlyUserChartProps> = ({
           <Legend wrapperStyle={{ color: "#ddd" }} />
           <Bar
             dataKey="Visitor"
-            fill={`url(#${gradientId})`} // Use gradient
+            fill={`url(#${gradientId})`} // ✅ Use dynamic gradient
             stackId="visitors"
             radius={[6, 6, 0, 0]}
           />

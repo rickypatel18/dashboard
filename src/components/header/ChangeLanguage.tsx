@@ -6,7 +6,7 @@ const flags = [
   { id: "uk", src: "/ukflag.svg", label: "UK" },
 ];
 
-export function SelectDemo() {
+export function ChangeLanguage() {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const toggleFlag = () => {
@@ -14,7 +14,7 @@ export function SelectDemo() {
   };
 
   return (
-    <label className="relative flex items-center gap-0 bg-gray-800 rounded-full cursor-pointer w-fit ">
+    <label className="relative flex items-center gap-0  dark:bg-gray-800 rounded-full cursor-pointer w-fit border ">
       <input
         type="checkbox"
         checked={selectedIndex === 1}
@@ -23,7 +23,7 @@ export function SelectDemo() {
       />
 
       <div
-        className={`absolute top-1/2 transform -translate-y-1/2 w-6 h-6 lg:w-8 lg:h-8 rounded-full bg-white  transition-all duration-500 ${
+        className={`absolute top-1/2 transform -translate-y-1/2 w-6 h-6 lg:w-8 lg:h-8 rounded-full bg-gray-800 dark:bg-white  transition-all duration-500 ${
           selectedIndex === 1
             ? "translate-x-10.5 lg:translate-x-9.5"
             : "translate-x-1.5 lg:translate-x-0.5"

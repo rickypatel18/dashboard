@@ -3,11 +3,9 @@ import { Bell, Maximize, Menu, Search, Settings, X } from "lucide-react";
 import React, { useState, useRef, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-
+import { UserMenu } from "./UserMenu";
+import { ChangeLanguage } from "./ChangeLanguage";
 import { ThemeToggle } from "./ThemeToggle";
-import { UserMenu } from "./MenubarDemo";
-import { useTheme } from "next-themes";
-import { SelectDemo } from "./SelectDemo";
 
 const Header = ({
   isSidebarExpanded,
@@ -16,22 +14,6 @@ const Header = ({
   isSidebarExpanded: boolean;
   toggleSidebar: () => void;
 }) => {
-
-  const { theme, setTheme } = useTheme();
-    // Apply stored theme on first load
-    useEffect(() => {
-      const storedTheme = localStorage.getItem("theme") || "light";
-      setTheme(storedTheme);
-    }, [setTheme]);
-  
-    // Update localStorage whenever theme changes
-    useEffect(() => {
-      if (theme) {
-        localStorage.setItem("theme", theme);
-        document.documentElement.classList.toggle("dark", theme === "dark");
-      }
-    }, [theme]);
-
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const searchBoxRef = useRef<HTMLDivElement | null>(null);
@@ -49,7 +31,6 @@ const Header = ({
     if (isSearchOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
-
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -59,9 +40,8 @@ const Header = ({
     <>
       {/* Search Drawer */}
       <div
-        className={`fixed  top-0 left-1/2 transform -translate-x-1/2 w-full h-fit max-w-2xl bg-[#1a1919] transition-all duration-300 overflow-hidden flex items-start justify-center z-20  ${
-          isSearchOpen ? "h-[30vh] opacity-100" : "h-0 opacity-0"
-        }`}
+        className={`fixed top-0 left-1/2 transform -translate-x-1/2 w-full h-fit max-w-2xl bg-[#1a1919] transition-all duration-500 overflow-hidden flex items-start justify-center z-20 ${isSearchOpen ? "h-[30vh] opacity-100" : "h-0 opacity-0"
+          }`}
         ref={searchBoxRef}
       >
         {isSearchOpen && (
@@ -81,7 +61,7 @@ const Header = ({
             </div>
             <div className="flex gap-2">
               <Input placeholder="Search..." className="flex-1" />
-              <Button variant="outline" className="text-white">
+              <Button variant="outline" className="dark:text-white">
                 Search
               </Button>
             </div>
@@ -89,21 +69,19 @@ const Header = ({
         )}
       </div>
 
+      {/* Main Header */}
       <div
-        className={`fixed px-4 top-0 transition-all duration-100 bg-[#110f0f] h-14 lg:h-16 flex items-center justify-between left-0 lg:left-20 w-full z-10  ${
-          isSidebarExpanded
+        className={`fixed px-4 top-0 transition-all duration-100 bg-[#fff] dark:bg-[#110f0f] h-14 lg:h-16 flex items-center justify-between left-0 lg:left-20 w-full z-10 ${isSidebarExpanded
             ? "lg:left-64 lg:w-[calc(100%-16rem)]"
             : "lg:left-20 lg:w-[calc(100%-5rem)]"
-        }`}
+          }`}
       >
         <div className="flex flex-row gap-2">
           {!isSidebarExpanded ? (
-            // Show logo on small screens when sidebar is collapsed
-            <div className="flex w-fit h-8  lg:hidden ">
+            <div className="flex w-fit h-8 lg:hidden">
               <img src="/logo.svg" alt="Logo" width={30} height={30} />
             </div>
           ) : (
-            // Show full logo when expanded
             <div className="flex flex-row">
               <div className="flex lg:hidden">
                 <img src="/logo.svg" alt="Logo" width={30} height={30} />
@@ -112,35 +90,51 @@ const Header = ({
             </div>
           )}
 
-          {/* Single Toggle Button */}
-          <button onClick={toggleSidebar} className="bg-transparent text-white">
+          {/* Sidebar Toggle */}
+          <button
+            onClick={toggleSidebar}
+            className="bg-transparent dark:text-white"
+          >
             {isSidebarExpanded ? <X /> : <Menu />}
           </button>
         </div>
 
-        <div className="flex gap-3 lg:gap-10 items-center justify-center ">
+        <div className="flex gap-3 lg:gap-10 items-center justify-center">
+          {/* Search Icon */}
           <button
             onClick={() => setIsSearchOpen(true)}
             className="relative flex items-center justify-center cursor-pointer w-fit"
           >
-            <Search className="w-5 lg:w-7 text-white dark:text-[var(--foreground)]" />
+            <Search className="w-5 lg:w-7 dark:text-white " />
           </button>
+
+          {/* Select Dropdown */}
           <div className="relative flex items-center justify-center cursor-pointer w-fit">
-            <SelectDemo />
+            <ChangeLanguage />
           </div>
+
+          {/* Theme Toggle */}
           <div className="relative flex items-center justify-center cursor-pointer w-fit">
-            <ThemeToggle theme={theme ?? "light"} setTheme={setTheme}/>
+            <ThemeToggle />
           </div>
-          <div className="relative hidden lg:flex items-center justify-center cursor-pointer w-fit">
+
+          {/* Notifications and Settings */}
+          <div className="relative hidden  lg:flex items-center justify-center cursor-pointer w-fit">
             <Bell />
           </div>
+
+          {/* userProfile  */}
           <div className="relative flex items-center justify-center cursor-pointer w-fit ">
             <UserMenu />
           </div>
+
+          {/* Maximize Icon  */}
           <div className="relative hidden lg:flex items-center justify-center cursor-pointer w-fit">
             <Maximize />
           </div>
-          <div className="relative flex items-center justify-center cursor-pointer w-fit ">
+
+          {/* Settings Icon  */}
+          <div className="relative flex items-center justify-center cursor-pointer w-fit">
             <Settings className="w-5 lg:w-7" />
           </div>
         </div>

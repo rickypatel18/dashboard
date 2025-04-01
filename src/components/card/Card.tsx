@@ -64,14 +64,14 @@ const Card = () => {
         return (
           <div
             key={card.key}
-            className="flex justify-between items-center bg-gray-900 px-4 py-7 rounded-xl opacity-90"
+            className="flex justify-between items-center bg-[#fff] dark:bg-gray-900 px-4 py-7 rounded-xl opacity-90"
           >
             <div className="flex gap-3">
-              <div className="p-1 lg:p-2 rounded-full bg-amber-200 flex w-fit h-fit">
-                <Users />
+              <div className="p-2 rounded-full bg-amber-200 flex w-fit h-fit">
+                <Users className="w-6"/>
               </div>
               <div className="flex flex-col items-start gap-5 justify-center">
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-0">
                   <p className="text-sm lg:text-md">{card.title}</p>
                   <p className="text-lg lg:text-2xl">
                     {values.reduce((acc: number, num: number) => acc + num, 0)}

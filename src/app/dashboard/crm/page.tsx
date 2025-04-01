@@ -3,8 +3,8 @@ import MonthlyUserChart from "@/components/charts/MonthlyUserChart";
 import GrowthChart from "@/components/charts/GrowthChart";
 import ChartPie from "@/components/charts/PieChart";
 import ProfitRevenueChart from "@/components/charts/ProfitRevenueChart";
-import CircularProgress from "@/components/CircularProgress";
-import MultiProgressBars from "@/components/ProgressBar";
+import CircularProgress from "@/components/charts/CircularProgress";
+import MultiProgressBars from "@/components/charts/ProgressBar";
 import LeadTable from "@/components/table/LeadTable";
 import UserTable from "@/components/table/UserTable";
 import React from "react";
@@ -47,27 +47,27 @@ const averagePercentage = (
 
 const page = () => {
   return (
-    <div className="flex flex-col gap-10 p-4">
-      <div className="">
+    <div className="flex flex-col gap-10 p-4 ">
+      <div className="chart">
         <MonthlyUserChart />
       </div>
 
       <div className="cards">
         <Card />
       </div>
-
-      {/* Responsive Grid Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-[59%_39%] xl:grid-cols-[59%_39%] lg:gap-5 xl:gap-6 2xl:gap-8  ">
         {/* First Column (Stacked Lead Table & Profit Revenue Chart) */}
         <div className="flex flex-col gap-6">
           <div className="table-layout bg-white dark:bg-gray-900 rounded-xl flex justify-center items-center">
             <LeadTable />
           </div>
           <div className="bg-white dark:bg-gray-900 rounded-xl flex flex-col justify-center items-center py-5 h-[600px]">
-            <h2 className="text-xl font-bold text-white">Profit revenue </h2>
+            <h2 className="text-xl font-bold dark:text-white">
+              Profit revenue{" "}
+            </h2>
             <ProfitRevenueChart
               data={sampleData}
-              barColors={{ pv: "#ff7300", uv: "#36a2eb" }}  
+              barColors={{ pv: "#ff7300", uv: "#36a2eb" }}
             />
           </div>
         </div>
@@ -75,16 +75,18 @@ const page = () => {
         {/* Second Column (Three Elements in One Row) */}
         <div className="grid grid-cols-1 gap-4">
           <div className="bg-white dark:bg-gray-900 rounded-xl justify-center flex flex-col items-center py-5 px-3">
-            <h2 className="text-xl font-bold text-white">User Growth</h2>
+            <h2 className="text-xl font-bold text-black dark:text-white">
+              User Growth
+            </h2>
             <CircularProgress percentage={Number(averagePercentage)} />
             <MultiProgressBars progressData={progressData} />
           </div>
           <div className="bg-white dark:bg-gray-900 py-5 rounded-xl flex flex-col justify-center items-center">
-            <h2 className="text-xl font-bold text-white"> Pie chart</h2>
-            <ChartPie data={PieChartData}/>
+            <h2 className="text-xl font-bold dark:text-white"> Pie chart</h2>
+            <ChartPie data={PieChartData} />
           </div>
           <div className="bg-white dark:bg-gray-900 rounded-xl flex flex-col justify-center py-5 items-center w-full">
-            <h2 className="text-xl font-bold text-white">Area chart</h2>
+            <h2 className="text-xl font-bold dark:text-white">Area chart</h2>
             <GrowthChart
               data={sampleData2}
               strokeColor=" #4facfe"

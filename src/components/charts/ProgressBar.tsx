@@ -29,7 +29,7 @@ const ProgressBar = ({ value, max, label, color = "bg-blue-500" }: ProgressBarPr
       </div>
 
       {/* Progress Bar */}
-      <div className="w-full bg-gray-800 rounded-full h-5 shadow-md relative overflow-hidden">
+      <div className="w-full bg-[#ddd] dark:bg-gray-800 rounded-full h-5 relative overflow-hidden">
         <div
           className={`h-full ${color} rounded-full transition-all duration-700 ease-in-out`}
           style={{
@@ -44,7 +44,7 @@ const ProgressBar = ({ value, max, label, color = "bg-blue-500" }: ProgressBarPr
 
 const MultiProgressBars = ({ progressData }: { progressData: ProgressData[] }) => {
   return (
-    <div className="w-full max-w-md mx-auto p-6 bg-gray-900 rounded-xl shadow-xl space-y-5">
+    <div className="w-full max-w-md mx-auto p-5 dark:bg-gray-900 rounded-xl border space-y-5">
       <h2 className="text-xl font-bold text-white text-center">Progress Overview</h2>
       {progressData.map((item, index) => (
         <ProgressBar key={index} {...item} />

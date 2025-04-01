@@ -53,7 +53,7 @@ const ProfitRevenueChart: React.FC<ChartProps> = ({
   barColors = { pv: "#8884d8", uv: "#4facfe" },
 }) => {
   return (
-    <div className="w-full mx-auto lg:pr-3  bg-white dark:bg-gray-900 rounded-xl h-full">
+    <div className="w-full lg:pr-3  bg-white dark:bg-gray-900 rounded-xl h-full">
       <ResponsiveContainer width="100%">
         <BarChart
           data={data}

@@ -174,7 +174,7 @@ const Sidebar = ({
         if (!isManuallyExpanded) setIsHovered(false);
       }}
     >
-      <div className="border-[0.5px] border-[#5f636950] h-16 flex justify-center items-center gap-2">
+      <div className="h-16 flex justify-center items-center gap-2">
         <img src="/logo.svg" alt="Logo" width={30} height={30} />
         {(isExpanded || isHovered) && (
           <div className="text-2xl pb-2">gnext</div>

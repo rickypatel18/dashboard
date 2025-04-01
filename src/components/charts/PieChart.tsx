@@ -1,6 +1,8 @@
 "use client";
 import React, { useCallback, useState } from "react";
 import { PieChart, Pie, Sector, Cell } from "recharts";
+import { useTheme } from "next-themes";  // Use next-themes' useTheme hook
+
 
 interface Data {
   name: string;
@@ -12,7 +14,7 @@ interface ChartPieProps {
   data: Data[]; // Accept data as a prop
 }
 
-const renderActiveShape = (props: any) => {
+const renderActiveShape = (props: any, textColor: string) => {  // Accept textColor as a parameter
   const RADIAN = Math.PI / 180;
   const {
     cx,
@@ -47,7 +49,7 @@ const renderActiveShape = (props: any) => {
         textAnchor="middle"
         fontSize={14}
         fontWeight="bold"
-        fill="#fff"
+        fill={textColor} // Use dynamic text color
       >
         {payload.name}
       </text>
@@ -61,7 +63,7 @@ const renderActiveShape = (props: any) => {
         startAngle={startAngle}
         endAngle={endAngle}
         fill={fill}
-        stroke="#fff"
+        stroke={textColor}
         strokeWidth={2}
         style={{ filter: "drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.2))" }}
       />
@@ -93,7 +95,7 @@ const renderActiveShape = (props: any) => {
         y={ey}
         textAnchor={textAnchor}
         fontSize={12}
-        fill="#fff"
+        fill="#A1A1AA"
       >
         {`Value: ${value}`}
       </text>
@@ -102,7 +104,7 @@ const renderActiveShape = (props: any) => {
         y={ey + 15}
         textAnchor={textAnchor}
         fontSize={12}
-        fill="#ccc"
+        fill="#A1A1AA"
       >
         {`(${(percent * 100).toFixed(1)}%)`}
       </text>
@@ -112,17 +114,19 @@ const renderActiveShape = (props: any) => {
 
 const ChartPie = ({ data }: ChartPieProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const { theme } = useTheme();  // Use next-themes' useTheme hook
+  const textColor = theme === "dark" ? "white" : "black"; // Set text color based on theme
 
   const onPieEnter = useCallback((_: unknown, index: number) => {
     setActiveIndex(index);
   }, []);
 
   return (
-    <div className="flex justify-center items-center w-full h-full bg-gray-900 rounded-xl shadow-md">
+    <div className="flex justify-center items-center w-full h-full dark:bg-gray-900 rounded-xl ">
       <PieChart width={500} height={390}>
         <Pie
           activeIndex={activeIndex}
-          activeShape={renderActiveShape}
+          activeShape={(props: any) => renderActiveShape(props, textColor)}  
           data={data}
           innerRadius={90}
           outerRadius={130}

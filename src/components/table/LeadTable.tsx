@@ -92,8 +92,8 @@ export default function LeadTable() {
 
       {/* Table */}
       <div className="border rounded-xl overflow-scroll scrollbar-hide">
-        <div className="max-h-[600px] w-full scrollbar-hide">
-          <Table className="w-full ">
+        <div className="max-h-[600px] scrollbar-hide">
+          <Table className="">
             <TableHeader>
               <TableRow className="bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-100">
                 <TableHead className="p-3">ID</TableHead>

@@ -33,8 +33,8 @@ const WaterProgress = ({
           cx="50"
           cy="50"
           r="45"
-          stroke="rgba(255, 255, 255, 0.1)"
-          strokeWidth="3"
+          stroke="#ddd"
+          strokeWidth="1"
           fill="transparent"
         />
       </svg>
