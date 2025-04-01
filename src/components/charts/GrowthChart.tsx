@@ -28,9 +28,9 @@ const GrowthChart: React.FC<ChartAreaProps> = ({
           data={data}
           margin={{ top: 20, right: 10, left: -10, bottom: 10 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-          <XAxis dataKey="name" stroke="#ddd" />
-          <YAxis stroke="#ddd" />
+          <CartesianGrid strokeDasharray="3 3" stroke="#444" strokeOpacity={0.2}/>
+          <XAxis dataKey="name" stroke="#bbb" tick={{ fill: "#bbb", fontSize: 12 }}/>
+          <YAxis stroke="#bbb" tick={{ fill: "#bbb", fontSize: 12 }}/>
           <Tooltip
             contentStyle={{
               backgroundColor: "#1f2937",

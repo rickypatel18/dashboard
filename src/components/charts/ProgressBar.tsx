@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { motion } from "framer-motion"; // Import Framer Motion
 
 interface ProgressBarProps {
   value: number;
@@ -15,7 +16,12 @@ interface ProgressData {
   color: string;
 }
 
-const ProgressBar = ({ value, max, label, color = "bg-blue-500" }: ProgressBarProps) => {
+const ProgressBar = ({
+  value,
+  max,
+  label,
+  color = "bg-blue-500",
+}: ProgressBarProps) => {
   const percentage = (value / max) * 100;
 
   return (
@@ -30,22 +36,30 @@ const ProgressBar = ({ value, max, label, color = "bg-blue-500" }: ProgressBarPr
 
       {/* Progress Bar */}
       <div className="w-full bg-[#ddd] dark:bg-gray-800 rounded-full h-5 relative overflow-hidden">
-        <div
-          className={`h-full ${color} rounded-full transition-all duration-700 ease-in-out`}
+        <motion.div
+          initial={{ width: 0 }} // Start from 0 width
+          animate={{ width: `${percentage}%` }} // Animate to actual percentage
+          transition={{ duration: 1, ease: "easeInOut" }} // Smooth left-to-right effect
+          className={`h-full ${color} rounded-full`}
           style={{
-            width: `${percentage}%`,
             backgroundImage: "linear-gradient(to right, #4facfe, #00f2fe)",
           }}
-        ></div>
+        />
       </div>
     </div>
   );
 };
 
-const MultiProgressBars = ({ progressData }: { progressData: ProgressData[] }) => {
+const MultiProgressBars = ({
+  progressData,
+}: {
+  progressData: ProgressData[];
+}) => {
   return (
-    <div className="w-full max-w-md mx-auto p-5 rounded-xl  space-y-5">
-      <h2 className="text-xl font-bold text-white text-center">Progress Overview</h2>
+    <div className="w-full max-w-md mx-auto p-5 rounded-xl space-y-5">
+      <h2 className="text-xl font-bold text-white text-center">
+        Progress Overview
+      </h2>
       {progressData.map((item, index) => (
         <ProgressBar key={index} {...item} />
       ))}

@@ -94,7 +94,7 @@ const page = () => {
         </div>
       </div>
 
-      <div className="table-layout bg-[var(--primary)] text-[var(--primary-foreground)]">
+      <div className="table-layout bg-[var(--primary)] text-[var(--primary-foreground)] rounded-xl ">
         <UserTable />
       </div>
     </div>

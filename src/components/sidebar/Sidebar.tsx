@@ -164,7 +164,7 @@ const Sidebar = ({
   return (
     <div
     ref={sidebarRef}
-      className={` fixed -left-20 lg:left-0 w-20 top-0 h-screen bg-[#110f0f] text-white z-50 transition-all duration-100 ${
+      className={` fixed -left-20 lg:left-0 w-20 top-0 h-screen bg-[#110f0f] border-[0.5px] border-[#f5e9e9] dark:border-[0.5px] dark:border-[#5f636950] text-white z-50 transition-all duration-100 ${
         isExpanded || isHovered ? "w-64 left-0" : "w-0"
       }`}
       onMouseEnter={() => {

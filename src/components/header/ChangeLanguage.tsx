@@ -14,7 +14,7 @@ export function ChangeLanguage() {
   };
 
   return (
-    <label className="relative flex items-center gap-0  dark:bg-gray-800 rounded-full cursor-pointer w-fit border ">
+    <label className="relative flex items-center gap-0  dark:bg-gray-800 rounded-full cursor-pointer w-fit border-[0.5px] border-[#5f636950] ">
       <input
         type="checkbox"
         checked={selectedIndex === 1}

@@ -24,7 +24,7 @@ const renderCustomizedLabel = (props: any) => {
     <text
       x={x + width / 2}
       y={y - 20} // Moved higher to prevent cutoff
-      fill="#fff"
+      fill="#bbb"
       textAnchor="middle"
       fontSize={12}
       fontWeight="bold"
@@ -59,9 +59,9 @@ const ProfitRevenueChart: React.FC<ChartProps> = ({
           data={data}
           margin={{ top: 50, right: 4, left: 0, bottom: 10 }} 
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-          <XAxis dataKey="name" stroke="#ddd" />
-          <YAxis stroke="#ddd" domain={["auto"]} /> 
+          <CartesianGrid strokeDasharray="3 3" stroke="#444" strokeOpacity={0.2} />
+          <XAxis dataKey="name" stroke="#bbb" tick={{ fill: "#bbb", fontSize: 12 }}/>
+          <YAxis stroke="#bbb" domain={["auto"]} tick={{ fill: "#bbb", fontSize: 12 }} /> 
           <Tooltip
             content={<CustomTooltip />}
             cursor={{ fill: "transparent" }}

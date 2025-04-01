@@ -1,17 +1,15 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { useTheme } from "next-themes";
 import { useInView } from "react-intersection-observer";
 import { Card } from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 
 interface User {
   id: number;
   name: string;
   email: string;
-  amount: string;
+  amount: number;
   status: string;
   location: string;
 }
@@ -20,7 +18,6 @@ export default function UserTable() {
   const [users, setUsers] = useState<User[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const { resolvedTheme } = useTheme();
   const { ref, inView } = useInView();
 
   const fetchUsers = useCallback(async () => {
@@ -42,12 +39,12 @@ export default function UserTable() {
   }, [inView, fetchUsers]);
 
   return (
-    <Card className="table-layout w-full max-w-full mx-auto p-4 border-[0.5px] border-[#5f636950] rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)]">
+    <Card className="table-layout w-full max-w-full mx-auto h-[800px] p-4 border-none shadow-none rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)]">
       <h2 className="text-xl font-semibold text-center mb-4">Users List</h2>
 
-      <div className="overflow-hidden  rounded-xl">
+      <div className="overflow-auto scrollbar-hide rounded-xl">
         <div className="overflow-y-auto min-h-[700px] scrollbar-hide">
-          <table className="w-full border-collapse">
+          <table className="w-full ">
             <thead className="sticky top-0 bg-gray-800 dark:bg-gray-200 text-gray-200 dark:text-gray-800">
               <tr>
                 <th className="px-4 py-3 text-left">ID</th>
@@ -63,9 +60,7 @@ export default function UserTable() {
               {users.map((user) => (
                 <tr
                   key={user.id}
-                  className={`border-b ${
-                    resolvedTheme === "dark" ? "bg-gray-800" : "bg-white"
-                  }`}
+                  className="border-b-[0.5px] border-[#5f636950]"
                 >
                   <td className="px-4 py-2">{user.id}</td>
                   <td className="px-4 py-2">{user.name}</td>
@@ -98,10 +93,8 @@ export default function UserTable() {
           {/* Infinite Scroll Loader */}
           <div ref={ref} className="h-10" />
           {loading && (
-            <div className="flex justify-center py-4">
-              <Skeleton className="w-10 h-10 rounded-full" />
-              <Skeleton className="w-10 h-10 rounded-full mx-2" />
-              <Skeleton className="w-10 h-10 rounded-full" />
+            <div className="flex justify-center py-4 animate-pulse h-20">
+              Loading...
             </div>
           )}
         </div>

@@ -11,6 +11,7 @@ import {
   CartesianGrid,
   Legend,
 } from "recharts";
+import Loader from "../loader/Loader";
 
 interface MonthlyUserChartProps {
   apiUrl?: string;
@@ -23,8 +24,8 @@ const MonthlyUserChart: React.FC<MonthlyUserChartProps> = ({
   barColor = "#4facfe",
   gradientId = "barGradient",
 }) => {
-  const { theme } = useTheme(); // ✅ Get the theme
-  const isDarkMode = theme === "dark"; // ✅ Determine if dark mode is active
+  const { theme } = useTheme(); 
+  const isDarkMode = theme === "dark"; 
 
   const [chartData, setChartData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -70,7 +71,7 @@ const MonthlyUserChart: React.FC<MonthlyUserChartProps> = ({
     return () => window.removeEventListener("resize", updateSpacing);
   }, []);
 
-  if (loading) return <p className="text-white text-center">Loading...</p>;
+  if (loading) return <Loader/> ;
   if (error) return <p className="text-red-500 text-center">Error: {error}</p>;
 
   return (
