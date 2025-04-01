@@ -52,7 +52,7 @@ export default function RootLayout({
                 isSidebarExpanded={isSidebarExpanded}
                 toggleSidebar={toggleSidebar}
               />
-              <main className="mt-16 px-0 py-4 lg:px-6 xl:px-8 2xl:px-10 w-full min-h-[calc(100vh-5rem)] ">
+              <main className="mt-16 px-0 py-4 lg:px-6 xl:px-8 2xl:px-10 w-full text-[var(--foreground)] bg-[var(--background)] min-h-[calc(100vh-5rem)] ">
                 {children}
               </main>
             </div>

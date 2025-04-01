@@ -38,7 +38,7 @@ export function UserMenu() {
             // onError={(e) => (e.currentTarget.src = "/fallback-avatar.png")}  local image of user
             priority
           />
-          <AvatarFallback>Avatar</AvatarFallback>
+          {/* <AvatarFallback>Avatar</AvatarFallback> */}
         </Avatar>
         <div className="hidden lg:flex lg:flex-col gap-0 ">
           <p className="text-sm">Tailor</p>

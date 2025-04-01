@@ -74,8 +74,8 @@ const MonthlyUserChart: React.FC<MonthlyUserChartProps> = ({
   if (error) return <p className="text-red-500 text-center">Error: {error}</p>;
 
   return (
-    <div className="py-2 bg-white dark:bg-gray-900 rounded-xl flex flex-col gap-5">
-      <h2 className="dark:text-white text-lg font-semibold text-center">
+    <div className="py-2 bg-[var(--primary)] text-[var(--primary-foreground)] rounded-xl flex flex-col gap-5">
+      <h2 className=" text-lg font-semibold text-center">
         Monthly Visitors
       </h2>
       <ResponsiveContainer width="100%" height={400}>
@@ -84,17 +84,16 @@ const MonthlyUserChart: React.FC<MonthlyUserChartProps> = ({
           barGap={barSpacing.barGap}
           barCategoryGap={barSpacing.barCategoryGap}
         >
-          {/* ✅ Define the gradient dynamically */}
           <defs>
             <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
               <stop 
                 offset="5%" 
-                stopColor={isDarkMode ? "#0d3b66" : "#1c94e4"} 
+                stopColor={isDarkMode ? "#1c94e4" : "#00f2fe"} 
                 stopOpacity={1} 
               />
               <stop 
                 offset="95%" 
-                stopColor={isDarkMode ? "#092540" : "#1c94e4"} 
+                stopColor={isDarkMode ? "#00f2fe" : "#1c94e4"} 
                 stopOpacity={0.8} 
               />
             </linearGradient>
@@ -116,7 +115,7 @@ const MonthlyUserChart: React.FC<MonthlyUserChartProps> = ({
           <Legend wrapperStyle={{ color: "#ddd" }} />
           <Bar
             dataKey="Visitor"
-            fill={`url(#${gradientId})`} // ✅ Use dynamic gradient
+            fill={`url(#${gradientId})`}
             stackId="visitors"
             radius={[6, 6, 0, 0]}
           />

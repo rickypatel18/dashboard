@@ -42,15 +42,13 @@ export default function UserTable() {
   }, [inView, fetchUsers]);
 
   return (
-    <Card className="table-layout w-full max-w-full mx-auto p-4 rounded-xl shadow-md bg-white dark:bg-gray-900">
-      <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
-        Users List
-      </h2>
+    <Card className="table-layout w-full max-w-full mx-auto p-4 border-[0.5px] border-[#5f636950] rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)]">
+      <h2 className="text-xl font-semibold text-center mb-4">Users List</h2>
 
-      <div className="overflow-hidden border rounded-xl">
+      <div className="overflow-hidden  rounded-xl">
         <div className="overflow-y-auto min-h-[700px] scrollbar-hide">
           <table className="w-full border-collapse">
-            <thead className="sticky top-0 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100">
+            <thead className="sticky top-0 bg-gray-800 dark:bg-gray-200 text-gray-200 dark:text-gray-800">
               <tr>
                 <th className="px-4 py-3 text-left">ID</th>
                 <th className="px-4 py-3 text-left">Name</th>
@@ -84,7 +82,11 @@ export default function UserTable() {
                   </td>
                   <td className="px-4 py-2">{user.location}</td>
                   <td className="px-4 py-2">
-                    <Button variant="outline" size="sm">
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      className="dark:bg-gray-200 dark:text-gray-800 bg-gray-800 text-gray-200 hover:bg-gray-200 hover:text-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                    >
                       View
                     </Button>
                   </td>

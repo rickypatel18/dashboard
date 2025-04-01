@@ -18,11 +18,11 @@ interface ChartAreaProps {
 
 const GrowthChart: React.FC<ChartAreaProps> = ({
   data,
-  strokeColor = "#8884d8",
-  fillColor = "#8884d8",
+  strokeColor = " #3896e7",
+  fillColor = "#00f2fe",
 }) => {
   return (
-    <div className=" dark:bg-gray-900 rounded-xl p-1 lg:p-2  w-full">
+    <div className="rounded-xl p-1 lg:p-2  w-full">
       <ResponsiveContainer width="100%" height={400}>
         <AreaChart
           data={data}
@@ -42,7 +42,7 @@ const GrowthChart: React.FC<ChartAreaProps> = ({
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor={fillColor} stopOpacity={0.8} />
-              <stop offset="95%" stopColor={fillColor} stopOpacity={0} />
+              <stop offset="95%" stopColor={fillColor} stopOpacity={0.1} />
             </linearGradient>
           </defs>
 

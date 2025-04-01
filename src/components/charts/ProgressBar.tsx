@@ -44,7 +44,7 @@ const ProgressBar = ({ value, max, label, color = "bg-blue-500" }: ProgressBarPr
 
 const MultiProgressBars = ({ progressData }: { progressData: ProgressData[] }) => {
   return (
-    <div className="w-full max-w-md mx-auto p-5 dark:bg-gray-900 rounded-xl border space-y-5">
+    <div className="w-full max-w-md mx-auto p-5 rounded-xl  space-y-5">
       <h2 className="text-xl font-bold text-white text-center">Progress Overview</h2>
       {progressData.map((item, index) => (
         <ProgressBar key={index} {...item} />

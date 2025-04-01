@@ -64,7 +64,7 @@ const Card = () => {
         return (
           <div
             key={card.key}
-            className="flex justify-between items-center bg-[#fff] dark:bg-gray-900 px-4 py-7 rounded-xl opacity-90"
+            className="flex justify-between items-center bg-[var(--primary)] text-[var(--primary-foreground)] px-4 py-7 "
           >
             <div className="flex gap-3">
               <div className="p-2 rounded-full bg-amber-200 flex w-fit h-fit">

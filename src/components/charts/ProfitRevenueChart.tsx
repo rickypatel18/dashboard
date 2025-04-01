@@ -57,11 +57,11 @@ const ProfitRevenueChart: React.FC<ChartProps> = ({
       <ResponsiveContainer width="100%">
         <BarChart
           data={data}
-          margin={{ top: 50, right: 4, left: 0, bottom: 10 }} // Added top margin
+          margin={{ top: 50, right: 4, left: 0, bottom: 10 }} 
         >
           <CartesianGrid strokeDasharray="3 3" stroke="#444" />
           <XAxis dataKey="name" stroke="#ddd" />
-          <YAxis stroke="#ddd" domain={["auto"]} /> {/* Extra space at top */}
+          <YAxis stroke="#ddd" domain={["auto"]} /> 
           <Tooltip
             content={<CustomTooltip />}
             cursor={{ fill: "transparent" }}

@@ -1,7 +1,7 @@
 "use client";
 import React, { useCallback, useState } from "react";
 import { PieChart, Pie, Sector, Cell } from "recharts";
-import { useTheme } from "next-themes";  // Use next-themes' useTheme hook
+import { useTheme } from "next-themes"; 
 
 
 interface Data {
@@ -11,10 +11,10 @@ interface Data {
 }
 
 interface ChartPieProps {
-  data: Data[]; // Accept data as a prop
+  data: Data[]; 
 }
 
-const renderActiveShape = (props: any, textColor: string) => {  // Accept textColor as a parameter
+const renderActiveShape = (props: any, textColor: string) => {  
   const RADIAN = Math.PI / 180;
   const {
     cx,
@@ -41,7 +41,6 @@ const renderActiveShape = (props: any, textColor: string) => {  // Accept textCo
 
   return (
     <g>
-      {/* Title in the Center */}
       <text
         x={cx}
         y={cy}
@@ -49,7 +48,7 @@ const renderActiveShape = (props: any, textColor: string) => {  // Accept textCo
         textAnchor="middle"
         fontSize={14}
         fontWeight="bold"
-        fill={textColor} // Use dynamic text color
+        fill={textColor} 
       >
         {payload.name}
       </text>
@@ -114,15 +113,15 @@ const renderActiveShape = (props: any, textColor: string) => {  // Accept textCo
 
 const ChartPie = ({ data }: ChartPieProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const { theme } = useTheme();  // Use next-themes' useTheme hook
-  const textColor = theme === "dark" ? "white" : "black"; // Set text color based on theme
+  const { theme } = useTheme();
+  const textColor = theme === "dark" ? "white" : "black"; 
 
   const onPieEnter = useCallback((_: unknown, index: number) => {
     setActiveIndex(index);
   }, []);
 
   return (
-    <div className="flex justify-center items-center w-full h-full dark:bg-gray-900 rounded-xl ">
+    <div className="flex justify-center items-center w-full h-full">
       <PieChart width={500} height={390}>
         <Pie
           activeIndex={activeIndex}

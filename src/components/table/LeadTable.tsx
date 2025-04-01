@@ -9,7 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Input } from "@/components/ui/input";
+// import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -69,38 +69,39 @@ export default function LeadTable() {
   );
 
   return (
-    <div className="w-full  mx-auto p-4 flex flex-col gap-5 bg-white dark:bg-gray-900 rounded-xl shadow-lg h-auto">
+    <div className="w-full  mx-auto p-4 flex flex-col gap-5  rounded-xl  h-auto">
       <div>
-        <h2 className="text-xl text-center font-bold text-black dark:text-white ">
+        <h2 className="text-xl text-center font-bold ">
           Lead Detail
         </h2>
       </div>
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
-        <Input
+        <input
           type="text"
           placeholder="Search users..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-1/3"
+          className="w-1/3 outline-none p-2 dark:bg-gray-200 dark:text-gray-800 bg-gray-800 text-gray-200 hover:bg-gray-200 hover:text-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-200"
         />
 
-        <Button variant="outline" onClick={handleSort}>
+        <Button variant="secondary" className="dark:bg-gray-200 dark:text-gray-800 bg-gray-800 text-gray-200 hover:bg-gray-200 hover:text-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-200
+" onClick={handleSort}>
           Sort by Name {sortOrder === "asc" ? <ChevronUp /> : <ChevronDown />}
         </Button>
       </div>
 
       {/* Table */}
-      <div className="border rounded-xl overflow-scroll scrollbar-hide">
+      <div className="border-[0.5px] border-[#5f636950] rounded-xl overflow-scroll scrollbar-hide">
         <div className="max-h-[600px] scrollbar-hide">
           <Table className="">
             <TableHeader>
-              <TableRow className="bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-100">
-                <TableHead className="p-3">ID</TableHead>
-                <TableHead className="p-3">Name</TableHead>
-                <TableHead className="p-3">Email</TableHead>
-                <TableHead className="p-3">Role</TableHead>
-                <TableHead className="p-3 text-right">Actions</TableHead>
+              <TableRow className="">
+                <TableHead className="p-3 dark:bg-gray-200 dark:text-gray-800 bg-gray-800 text-gray-200">ID</TableHead>
+                <TableHead className="p-3 dark:bg-gray-200 dark:text-gray-800 bg-gray-800 text-gray-200">Name</TableHead>
+                <TableHead className="p-3 dark:bg-gray-200 dark:text-gray-800 bg-gray-800 text-gray-200">Email</TableHead>
+                <TableHead className="p-3 dark:bg-gray-200 dark:text-gray-800 bg-gray-800 text-gray-200">Role</TableHead>
+                <TableHead className="p-3 dark:bg-gray-200 dark:text-gray-800 bg-gray-800 text-gray-200 text-right">Actions</TableHead>
               </TableRow>
             </TableHeader>
 

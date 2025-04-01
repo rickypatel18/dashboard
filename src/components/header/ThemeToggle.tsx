@@ -16,7 +16,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="transition-all duration-300"
+      className="transition-all duration-300 cursor-pointer"
     >
       {theme === "dark" ? (
         <Sun className="w-5 lg:w-7 text-yellow-300" />

@@ -6,14 +6,12 @@ interface WaterProgressProps {
   percentage: number; // Value from 0 to 100
   size?: number; // Circle size
   color?: string; // Wave color
-  bgColor?: string; // Background color
 }
 
 const WaterProgress = ({
   percentage,
   size = 150,
   color = " #4facfe",
-  bgColor = "#222",
 }: WaterProgressProps) => {
   const fillHeight = (100 - percentage) * 0.8; // Convert percentage to wave height
 
@@ -33,7 +31,7 @@ const WaterProgress = ({
           cx="50"
           cy="50"
           r="45"
-          stroke="#ddd"
+          stroke="#00f2fe"
           strokeWidth="1"
           fill="transparent"
         />
@@ -72,7 +70,7 @@ const WaterProgress = ({
       </svg>
 
       {/* Percentage Display */}
-      <div className="absolute text-white font-bold text-2xl">
+      <div className="absolute  font-bold text-2xl">
         {percentage}%
       </div>
     </div>
