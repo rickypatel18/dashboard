@@ -7,7 +7,15 @@ import {
   NotebookText,
   ChevronDown,
   ChevronRight,
+  ShieldUser,
+  NotebookTabs,
+  Wrench,
+  BookOpenCheck,
+  PhoneOutgoing,
 } from "lucide-react";
+import { Avatar } from "../ui/avatar";
+import Image from "next/image";
+import { Button } from "../ui/button";
 
 const menu = [
   {
@@ -40,6 +48,63 @@ const menu = [
       { value: "Pricing" },
       { value: "Jobs" },
       { value: "Blogs" },
+    ],
+  },
+  {
+    menu: "Task",
+    icon: <NotebookTabs />,
+    submenu: [
+      { value: "Board" },
+      { value: "Listview" },
+      {
+        value: "Task Detail",
+        submenu: [
+          { value: "Daily" },
+          { value: "Today" },
+          { value: "Datewise" },
+        ],
+      },
+      { value: "Courses" },
+    ],
+  },
+  {
+    menu: "Authentication",
+    icon: <ShieldUser />,
+    submenu: [
+      { value: "Sign Up" },
+      { value: "Sign In" },
+      { value: "Two Step Verification" },
+      { value: "Reset Password" },
+    ],
+  },
+  {
+    menu: "Tools",
+    icon: <Wrench />,
+    submenu: [
+      { value: "Sign Up" },
+      { value: "Sign In" },
+      { value: "Two Step Verification" },
+      { value: "Reset Password" },
+    ],
+  },
+  {
+    menu: "Invoice",
+    icon: <BookOpenCheck />,
+    submenu: [
+      { value: "Sign Up" },
+      { value: "Sign In" },
+      { value: "Two Step Verification" },
+      { value: "Reset Password" },
+    ],
+  },
+  {
+    menu: "Conatact Us",
+    icon: <PhoneOutgoing />,
+    submenu: [
+      { value: "Sign Up" },
+      { value: "Sign In" },
+      { value: "Two Step Verification" },
+      { value: "Reset Password" },
     ],
   },
 ];
@@ -163,8 +228,8 @@ const Sidebar = ({
 
   return (
     <div
-    ref={sidebarRef}
-      className={` fixed -left-20 lg:left-0 w-20 top-0 h-screen bg-[#110f0f] border-[0.5px] border-[#f5e9e9] dark:border-[0.5px] dark:border-[#5f636950] text-white z-50 transition-all duration-100 ${
+      ref={sidebarRef}
+      className={` fixed -left-20 lg:left-0  flex flex-col justify-between w-20 top-0 h-screen bg-[#110f0f]  text-white z-50 transition-all duration-100 ${
         isExpanded || isHovered ? "w-64 left-0" : "w-0"
       }`}
       onMouseEnter={() => {
@@ -174,105 +239,107 @@ const Sidebar = ({
         if (!isManuallyExpanded) setIsHovered(false);
       }}
     >
-      <div className="h-16 flex justify-center items-center gap-2">
-        <img src="/logo.svg" alt="Logo" width={30} height={30} />
-        {(isExpanded || isHovered) && (
-          <div className="text-2xl pb-2">gnext</div>
-        )}
-      </div>
-
-      <div className="p-4 ">
-        {menu.map((item, index) => (
-          <div key={index} className="mb-2">
-            <button
-              className={`text-white w-full hover:bg-blue-200/10 flex items-center p-3 rounded-md justify-between ${
-                openMenu === item.menu ? "bg-blue-200/5" : ""
-              }`}
-              onClick={() => handleToggle(item.menu)}
-            >
-              <div className="flex items-center gap-3">
-                <div>{item.icon}</div>
-                {(isExpanded || isHovered) && <span>{item.menu}</span>}
-              </div>
-
-              {(isExpanded || isHovered) && (
-                <div>
-                  {openMenu === item.menu ? (
-                    <ChevronDown size={16} />
-                  ) : (
-                    <ChevronRight size={16} />
-                  )}
+      <div className="">
+        <div className="h-16 flex justify-center items-center gap-2">
+          <img src="/logo.svg" alt="Logo" width={30} height={30} />
+          {(isExpanded || isHovered) && (
+            <div className="text-2xl pb-2">gnext</div>
+          )}
+        </div>
+        <div className="p-4 ">
+          {menu.map((item, index) => (
+            <div key={index} className="mb-2">
+              <button
+                className={`text-white w-full hover:bg-blue-200/10 flex items-center p-3 rounded-md justify-between ${
+                  openMenu === item.menu ? "bg-blue-200/5" : ""
+                }`}
+                onClick={() => handleToggle(item.menu)}
+              >
+                <div className="flex items-center gap-3">
+                  <div>{item.icon}</div>
+                  {(isExpanded || isHovered) && <span>{item.menu}</span>}
                 </div>
-              )}
-            </button>
 
-            {(isExpanded || isHovered) && openMenu === item.menu && (
-              <ul className="pl-6 mt-2 space-y-1">
-                {item.submenu.map((sub, subIndex) => {
-                  const subPath = generateUrl(item.menu, sub);
-                  const isActive = isItemActive(sub.value);
+                {(isExpanded || isHovered) && (
+                  <div>
+                    {openMenu === item.menu ? (
+                      <ChevronDown size={16} />
+                    ) : (
+                      <ChevronRight size={16} />
+                    )}
+                  </div>
+                )}
+              </button>
 
-                  return (
-                    <li key={subIndex}>
-                      {sub.submenu ? (
-                        <>
-                          <button
-                            className={`w-full flex items-center justify-between p-2 rounded-md transition-colors ${
-                              isActive
-                                ? "bg-blue-200/10"
-                                : "hover:bg-blue-200/10"
-                            }`}
-                            onClick={() => handleSubmenuToggle(sub.value)}
-                          >
-                            <span>{sub.value}</span>
-                            {openSubmenus[sub.value] ? (
-                              <ChevronDown size={14} />
-                            ) : (
-                              <ChevronRight size={14} />
+              {(isExpanded || isHovered) && openMenu === item.menu && (
+                <ul className="pl-6 mt-2 space-y-1">
+                  {item.submenu.map((sub, subIndex) => {
+                    const subPath = generateUrl(item.menu, sub);
+                    const isActive = isItemActive(sub.value);
+
+                    return (
+                      <li key={subIndex}>
+                        {sub.submenu ? (
+                          <>
+                            <button
+                              className={`w-full flex items-center justify-between p-2 rounded-md transition-colors ${
+                                isActive
+                                  ? "bg-blue-200/10"
+                                  : "hover:bg-blue-200/10"
+                              }`}
+                              onClick={() => handleSubmenuToggle(sub.value)}
+                            >
+                              <span>{sub.value}</span>
+                              {openSubmenus[sub.value] ? (
+                                <ChevronDown size={14} />
+                              ) : (
+                                <ChevronRight size={14} />
+                              )}
+                            </button>
+
+                            {openSubmenus[sub.value] && (
+                              <ul className="pl-4 mt-1 space-y-1">
+                                {sub.submenu.map((nested, nestedIndex) => (
+                                  <li key={nestedIndex}>
+                                    <Link href={generateUrl(item.menu, nested)}>
+                                      <span
+                                        className={`block w-full p-2 rounded-md cursor-pointer transition-colors ${
+                                          isItemActive(nested.value)
+                                            ? "bg-blue-200/10"
+                                            : "hover:bg-blue-200/10"
+                                        }`}
+                                      >
+                                        {nested.value}
+                                      </span>
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
                             )}
-                          </button>
-
-                          {openSubmenus[sub.value] && (
-                            <ul className="pl-4 mt-1 space-y-1">
-                              {sub.submenu.map((nested, nestedIndex) => (
-                                <li key={nestedIndex}>
-                                  <Link href={generateUrl(item.menu, nested)}>
-                                    <span
-                                      className={`block w-full p-2 rounded-md cursor-pointer transition-colors ${
-                                        isItemActive(nested.value)
-                                          ? "bg-blue-200/10"
-                                          : "hover:bg-blue-200/10"
-                                      }`}
-                                    >
-                                      {nested.value}
-                                    </span>
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                        </>
-                      ) : (
-                        <Link href={subPath}>
-                          <span
-                            className={`block w-full p-2 rounded-md cursor-pointer transition-colors ${
-                              isActive
-                                ? "bg-blue-200/10"
-                                : "hover:bg-blue-200/10"
-                            }`}
-                          >
-                            {sub.value}
-                          </span>
-                        </Link>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
-          </div>
-        ))}
+                          </>
+                        ) : (
+                          <Link href={subPath}>
+                            <span
+                              className={`block w-full p-2 rounded-md cursor-pointer transition-colors ${
+                                isActive
+                                  ? "bg-blue-200/10"
+                                  : "hover:bg-blue-200/10"
+                              }`}
+                            >
+                              {sub.value}
+                            </span>
+                          </Link>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
+     
     </div>
   );
 };

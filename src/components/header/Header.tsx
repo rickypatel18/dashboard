@@ -59,6 +59,7 @@ const Header = ({
   useEffect(() => {
     const handleFullscreenChange = () => {
       setIsFullscreen(!!document.fullscreenElement);
+      // setIsFullscreen(document.fullscreenElement ? true : false);
     };
     document.addEventListener("fullscreenchange", handleFullscreenChange);
     return () => {
@@ -70,9 +71,8 @@ const Header = ({
     <>
       {/* Search Drawer */}
       <div
-        className={`fixed top-0 left-1/2 transform -translate-x-1/2 w-full h-fit max-w-2xl bg-[#1a1919] transition-all duration-500 overflow-hidden flex items-start justify-center z-20 ${
-          isSearchOpen ? "h-[30vh] opacity-100" : "h-0 opacity-0"
-        }`}
+        className={`fixed top-0 left-1/2 transform -translate-x-1/2 w-full h-fit max-w-2xl bg-[#1a1919] transition-all duration-500 overflow-hidden flex items-start justify-center z-20 ${isSearchOpen ? "h-[30vh] opacity-100" : "h-0 opacity-0"
+          }`}
         ref={searchBoxRef}
       >
         {isSearchOpen && (
@@ -102,31 +102,19 @@ const Header = ({
 
       {/* Main Header */}
       <div
-        className={`fixed px-4 border-[0.5px] border-[#f5e9e9] dark:border-[0.5px] dark:border-[#5f636950] top-0 transition-all duration-100 bg-[#fff] dark:bg-[#110f0f] h-14 lg:h-16 flex items-center justify-between left-0 lg:left-20 w-full z-10 ${
-          isSidebarExpanded
+        className={`fixed px-4 border-[0.5px] border-[#f5e9e9] dark:border-[0.5px] dark:border-[#5f636950] top-0 transition-all duration-100 bg-[#fff] dark:bg-[#110f0f] h-14 lg:h-16 flex items-center justify-between left-0 lg:left-20 w-full z-10 ${isSidebarExpanded
             ? "lg:left-64 lg:w-[calc(100%-16rem)]"
             : "lg:left-20 lg:w-[calc(100%-5rem)]"
-        }`}
+          }`}
       >
         <div className="flex flex-row gap-2">
-          {!isSidebarExpanded ? (
-            <div className="flex w-fit h-8 lg:hidden">
-              <img src="/logo.svg" alt="Logo" width={30} height={30} />
-            </div>  
-          ) : (
-            <div className="flex flex-row">
-              <div className="flex lg:hidden">
-                <img src="/logo.svg" alt="Logo" width={30} height={30} />
-                <div className="text-2xl pb-2">gnext</div>
-              </div>
-            </div>
-          )}
+          <div className="flex w-fit h-8 lg:hidden">
+            <img src="/logo.svg" alt="Logo" width={30} height={30} />
+            {isSidebarExpanded && <div className="text-2xl pb-2">gnext</div>}
+          </div>
 
           {/* Sidebar Toggle */}
-          <button
-            onClick={toggleSidebar}
-            className="bg-transparent dark:text-white"
-          >
+          <button onClick={toggleSidebar}>
             {isSidebarExpanded ? <X /> : <Menu />}
           </button>
         </div>

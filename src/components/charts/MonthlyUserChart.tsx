@@ -111,7 +111,7 @@ const MonthlyUserChart: React.FC<MonthlyUserChartProps> = ({
               border: "none",
               padding: "10px",
             }}
-            cursor={{ fill: "rgba(255,255,255,0.1)" }}
+            cursor={{ fill: "rgba(255,255,255,0)" }}
           />
           <Legend wrapperStyle={{ color: "#ddd" }} />
           <Bar

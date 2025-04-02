@@ -17,7 +17,6 @@ const Card = () => {
           throw new Error("Failed to fetch card data");
         }
         const result = await response.json();
-        console.log(result);
         setData(result);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Unknown error");
@@ -61,6 +60,8 @@ const Card = () => {
       {cardInfo.map((card) => {
         const values =
           data[card.key]?.map((item: any) => item[card.dataKey]) || [];
+          console.log(values);
+          
         const percentageChange = calculatePercentageChange(values);
 
         return (

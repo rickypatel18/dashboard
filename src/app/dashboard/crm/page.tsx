@@ -9,7 +9,7 @@ import LeadTable from "@/components/table/LeadTable";
 import UserTable from "@/components/table/UserTable";
 import React from "react";
 
-const sampleData = [
+const profitRevenueData = [
   { name: "2020", uv: 1000, pv: 7800, amt: 2290 },
   { name: "2021", uv: 1280, pv: 3908, amt: 2000 },
   { name: "2022", uv: 1490, pv: 4800, amt: 2181 },
@@ -17,7 +17,7 @@ const sampleData = [
   { name: "2024", uv: 1790, pv: 4300, amt: 2100 },
 ];
 
-const sampleData2 = [
+const growthData = [
   { name: "1-2", uv: 4000, pv: 2400, amt: 2400 },
   { name: "3-4", uv: 3000, pv: 1398, amt: 2210 },
   { name: " 5-6", uv: 2000, pv: 9800, amt: 2290 },
@@ -62,11 +62,11 @@ const page = () => {
             <LeadTable />
           </div>
           <div className="bg-[var(--primary)] text-[var(--primary-foreground)] rounded-xl flex flex-col justify-center items-center py-5 h-[600px]">
-            <h2 className="text-xl font-semibold dark:text-white">
+            <h2 className="text-xl font-semibold">
               Profit revenue{" "}
             </h2>
             <ProfitRevenueChart
-              data={sampleData}
+              data={profitRevenueData}
               barColors={{ uv: "#00f2fe", pv: "#36a2eb" }}
             />
           </div>
@@ -86,7 +86,7 @@ const page = () => {
           <div className="bg-[var(--primary)] text-[var(--primary-foreground)] rounded-xl flex flex-col justify-center py-5 items-center w-full">
             <h2 className="text-xl font-semibold ">Area chart</h2>
             <GrowthChart
-              data={sampleData2}
+              data={growthData}
               strokeColor=" #00f2fe"
               fillColor=" #3896e7"
             />

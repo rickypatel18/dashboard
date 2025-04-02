@@ -1,19 +1,20 @@
 "use client";
-import { Poppins, Roboto } from "next/font/google";
+import { Roboto , Barlow} from "next/font/google";
+
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { useState, useEffect } from "react";
 import Header from "@/components/header/Header";
 import Sidebar from "@/components/sidebar/Sidebar";
-import Loader from "@/components/loader/Loader";
 
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-});
+
 const roboto = Roboto({
   variable: "--font-roboto",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+});
+const barlow = Barlow({
+  variable: "--font-barlow",
   subsets: ["latin"],
   weight: ["400", "500", "700"],
 });
@@ -33,7 +34,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${roboto.variable} ${poppins.variable} antialiased`}>
+      <body className={`${barlow.variable} ${roboto.variable}  antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system">
           <div className="flex min-h-screen">
             <>

@@ -40,7 +40,7 @@ export function UserMenu() {
           />
           {/* <AvatarFallback>Avatar</AvatarFallback> */}
         </Avatar>
-        <div className="hidden lg:flex lg:flex-col gap-0 ">
+        <div className="hidden lg:flex lg:flex-col  items-start ">
           <p className="text-sm">Tailor</p>
           <p className="text-xs">Designer</p>
         </div>

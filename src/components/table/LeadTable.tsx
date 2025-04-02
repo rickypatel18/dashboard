@@ -1,15 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-// import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -71,60 +62,63 @@ export default function LeadTable() {
   return (
     <div className="w-full  mx-auto p-4 flex flex-col gap-5  rounded-xl  h-auto">
       <div>
-        <h2 className="text-xl text-center font-bold ">
-          Lead Detail
-        </h2>
+        <h2 className="text-xl text-center font-bold ">Lead Detail</h2>
       </div>
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
         <input
           type="text"
-          placeholder="Search users..."
+          placeholder="Search by name, email or role"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-1/3 rounded-lg outline-none p-2 dark:bg-gray-200 dark:text-gray-800 bg-gray-800 text-gray-200 hover:bg-gray-200 hover:text-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+          className="w-1/2 lg:w-1/3 rounded-lg p-2 border border-gray-300 bg-white text-gray-900 focus:bg-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-gray-100  focus:outline-none focus:ring-0 focus:border-transparent transition-colors"
         />
 
-        <Button variant="secondary" className="dark:bg-gray-200 dark:text-gray-800 bg-gray-800 text-gray-200 hover:bg-gray-200 hover:text-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-200
-" onClick={handleSort}>
+        <Button
+          variant="secondary"
+          className="p-2 rounded-lg border border-gray-300 bg-white text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-gray-100 focus:outline-none focus:ring-0 focus:border-transparent transition-colors"
+          onClick={handleSort}
+        >
           Sort by Name {sortOrder === "asc" ? <ChevronUp /> : <ChevronDown />}
         </Button>
       </div>
 
       {/* Table */}
-      <div className="border-[0.5px] border-[#5f636950] rounded-xl overflow-scroll scrollbar-hide">
-        <div className="max-h-[600px] scrollbar-hide">
-          <Table className="">
-            <TableHeader>
-              <TableRow className="">
-                <TableHead className="p-3 dark:bg-gray-200 dark:text-gray-800 bg-gray-800 text-gray-200">ID</TableHead>
-                <TableHead className="p-3 dark:bg-gray-200 dark:text-gray-800 bg-gray-800 text-gray-200">Name</TableHead>
-                <TableHead className="p-3 dark:bg-gray-200 dark:text-gray-800 bg-gray-800 text-gray-200">Email</TableHead>
-                <TableHead className="p-3 dark:bg-gray-200 dark:text-gray-800 bg-gray-800 text-gray-200">Role</TableHead>
-                <TableHead className="p-3 dark:bg-gray-200 dark:text-gray-800 bg-gray-800 text-gray-200 text-right">Actions</TableHead>
-              </TableRow>
-            </TableHeader>
+      <div className="border-[0.5px] border-[#5f636950] rounded-xl overflow-hidden">
+        <div className="max-h-[600px] overflow-auto scrollbar-hide">
+          <table className="w-full border-collapse">
+            <thead className="sticky top-0 z-10 bg-gray-800 dark:bg-gray-200">
+              <tr>
+                <th className="p-3 text-gray-200 dark:text-gray-800">ID</th>
+                <th className="p-3 text-gray-200 dark:text-gray-800">Name</th>
+                <th className="p-3 text-gray-200 dark:text-gray-800">Email</th>
+                <th className="p-3 text-gray-200 dark:text-gray-800">Role</th>
+                <th className="p-3 text-gray-200 dark:text-gray-800 text-right">
+                  Actions
+                </th>
+              </tr>
+            </thead>
 
-            <TableBody>
+            {/* Table Body */}
+            <tbody>
               {filteredUsers.length > 0 ? (
                 filteredUsers.map((user) => (
-                  <TableRow
+                  <tr
                     key={user.id}
                     className="border-b border-gray-300 dark:border-gray-700"
                   >
-                    <TableCell className="p-3">{user.id}</TableCell>
-                    <TableCell className="p-3">{user.name}</TableCell>
-                    <TableCell className="p-3">{user.email}</TableCell>
-                    <TableCell className="p-3">{user.role}</TableCell>
-                    <TableCell className="p-3 text-right">
-                      {/* Dropdown Actions */}
+                    <td className="p-3">{user.id}</td>
+                    <td className="p-3">{user.name}</td>
+                    <td className="p-3">{user.email}</td>
+                    <td className="p-3">{user.role}</td>
+                    <td className="p-3 text-right">
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                           <Button variant="ghost">
                             <MoreHorizontal className="w-5 h-5" />
                           </Button>
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent>
+                        <DropdownMenuContent className="bg-gray-800 text-gray-200 dark:bg-gray-800 dark:text-gray-200">
                           <DropdownMenuItem
                             onClick={() => alert(`Viewing ${user.name}`)}
                           >
@@ -142,18 +136,18 @@ export default function LeadTable() {
                           </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
-                    </TableCell>
-                  </TableRow>
+                    </td>
+                  </tr>
                 ))
               ) : (
-                <TableRow>
-                  <TableCell colSpan={5} className="text-center p-4">
+                <tr>
+                  <td colSpan={5} className="text-center p-4">
                     No users found
-                  </TableCell>
-                </TableRow>
+                  </td>
+                </tr>
               )}
-            </TableBody>
-          </Table>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

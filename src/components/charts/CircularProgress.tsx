@@ -32,7 +32,7 @@ const WaterProgress = ({
           cy="50"
           r="45"
           stroke="#00f2fe"
-          strokeWidth="1"
+          strokeWidth="0.7"
           fill="transparent"
         />
       </svg>
@@ -70,9 +70,7 @@ const WaterProgress = ({
       </svg>
 
       {/* Percentage Display */}
-      <div className="absolute  font-bold text-2xl">
-        {percentage}%
-      </div>
+      <div className="absolute  font-bold text-2xl">{percentage}%</div>
     </div>
   );
 };
