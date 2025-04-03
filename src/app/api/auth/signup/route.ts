@@ -21,11 +21,11 @@ function writeUsers(users: any[]) {
 
 export async function POST(req: Request) {
   try {
-    const { email, password } = await req.json();
+    const { email, password, name, designation } = await req.json();
 
-    if (!email || !password) {
+    if (!email || !password || !name || !designation) {
       return NextResponse.json(
-        { message: "Email and password are required." },
+        { message: "All fields are required." },
         { status: 400 }
       );
     }
@@ -40,7 +40,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const newUser = { email, password }; // Password should be hashed in real apps
+    const newUser = { email, password, name, designation };
     users.push(newUser);
     writeUsers(users);
 

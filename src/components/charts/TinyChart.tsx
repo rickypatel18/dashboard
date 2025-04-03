@@ -23,7 +23,7 @@ export default function TinyChart({
         type="monotone"
         dataKey={dataKey}
         stroke={color}
-        strokeWidth={2}
+        strokeWidth={1}
         dot={false}
       />
     </LineChart>

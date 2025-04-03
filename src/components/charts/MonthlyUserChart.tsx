@@ -11,7 +11,6 @@ import {
   CartesianGrid,
   Legend,
 } from "recharts";
-import Loader from "../loader/Loader";
 
 interface MonthlyUserChartProps {
   apiUrl?: string;
@@ -24,8 +23,8 @@ const MonthlyUserChart: React.FC<MonthlyUserChartProps> = ({
   barColor = "#4facfe",
   gradientId = "barGradient",
 }) => {
-  const { theme } = useTheme(); 
-  const isDarkMode = theme === "dark"; 
+  const { theme } = useTheme();
+  const isDarkMode = theme === "dark";
 
   const [chartData, setChartData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -47,7 +46,9 @@ const MonthlyUserChart: React.FC<MonthlyUserChartProps> = ({
         setChartData(data);
       } catch (err: unknown) {
         console.error("Error fetching data:", err);
-        setError(err instanceof Error ? err.message : "An unknown error occurred");
+        setError(
+          err instanceof Error ? err.message : "An unknown error occurred"
+        );
       } finally {
         setLoading(false);
       }
@@ -71,14 +72,16 @@ const MonthlyUserChart: React.FC<MonthlyUserChartProps> = ({
     return () => window.removeEventListener("resize", updateSpacing);
   }, []);
 
-  if (loading) return <Loader/> ;
+  if (loading)
+    return (
+      <div className="text-center text-lg font-medium text-gray-500 py-6 animate-pulse">
+        Loading...
+      </div>
+    );
   if (error) return <p className="text-red-500 text-center">Error: {error}</p>;
 
   return (
-    <div className="py-2 bg-[var(--primary)] text-[var(--primary-foreground)] rounded-xl flex flex-col gap-5">
-      <h2 className=" text-lg font-semibold text-center">
-        Monthly Visitors
-      </h2>
+    <div className="py-5 rounded-xl flex flex-col gap-5  ">
       <ResponsiveContainer width="100%" height={400}>
         <BarChart
           data={chartData}
@@ -87,15 +90,15 @@ const MonthlyUserChart: React.FC<MonthlyUserChartProps> = ({
         >
           <defs>
             <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
-              <stop 
-                offset="5%" 
-                stopColor={isDarkMode ? "#1c94e4" : "#00f2fe"} 
-                stopOpacity={1} 
+              <stop
+                offset="5%"
+                stopColor={isDarkMode ? "#1c94e4" : "#00f2fe"}
+                stopOpacity={1}
               />
-              <stop 
-                offset="95%" 
-                stopColor={isDarkMode ? "#00f2fe" : "#1c94e4"} 
-                stopOpacity={0.8} 
+              <stop
+                offset="95%"
+                stopColor={isDarkMode ? "#00f2fe" : "#1c94e4"}
+                stopOpacity={0.8}
               />
             </linearGradient>
           </defs>

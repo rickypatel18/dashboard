@@ -62,42 +62,44 @@ export default function UserTable() {
     }
     const minAmount = parseFloat(filters.minAmount) || 0;
     const maxAmount = parseFloat(filters.maxAmount) || Infinity;
-    filtered = filtered.filter((user) => user.amount >= minAmount && user.amount <= maxAmount);
+    filtered = filtered.filter(
+      (user) => user.amount >= minAmount && user.amount <= maxAmount
+    );
     return filtered;
   }, [filters, users]);
 
   return (
     <Card className="w-full mx-auto p-4 border-none flex flex-col gap-5 rounded-xl">
-      <h2 className="text-xl font-bold text-center mb-4">Users List</h2>
-
       <div className="flex flex-wrap gap-4 mb-4 justify-between items-center">
-        <input
-          type="text"
-          placeholder="Search by Name or Email"
-          value={filters.search}
-          onChange={(e) =>
-            setFilters((prev) => ({ ...prev, search: e.target.value }))
-          }
-          className="w-1/3 rounded-lg p-2 border border-gray-300 focus:bg-gray-200 bg-white text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-gray-100 focus:outline-none transition-colors"
-        />
+        <div className="flex gap-2 w-full justify-between items-center">
+          <input
+            type="text"
+            placeholder="Search by Name or Email"
+            value={filters.search}
+            onChange={(e) =>
+              setFilters((prev) => ({ ...prev, search: e.target.value }))
+            }
+            className="w-1/2 lg:w-1/3 rounded-lg p-2 border-[0.5px] border-[#5f636950] focus:bg-gray-200 bg-white text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-gray-100 focus:outline-none transition-colors"
+          />
 
-        <Select
-          value={filters.status}
-          onValueChange={(value) =>
-            setFilters((prev) => ({ ...prev, status: value }))
-          }
-        >
-          <SelectTrigger className="w-1/4 rounded-lg p-2 text-gray-900 bg-white border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-gray-100 focus:outline-none transition-colors">
-            <SelectValue placeholder="Filter by Status" />
-          </SelectTrigger>
-          <SelectContent className="bg-white text-gray-900 dark:bg-gray-800 dark:text-gray-200">
-            <SelectItem value="all">All Status</SelectItem>
-            <SelectItem value="Done">Done</SelectItem>
-            <SelectItem value="Pending">Pending</SelectItem>
-          </SelectContent>
-        </Select>
+          <Select
+            value={filters.status}
+            onValueChange={(value) =>
+              setFilters((prev) => ({ ...prev, status: value }))
+            }
+          >
+            <SelectTrigger className="w-1/3 lg:w-1/3 rounded-lg p-2 text-gray-900 bg-white border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-gray-100 focus:outline-none transition-colors">
+              <SelectValue placeholder="Filter by Status" />
+            </SelectTrigger>
+            <SelectContent className="bg-white text-gray-900 dark:bg-gray-800 dark:text-gray-200">
+              <SelectItem value="all">All Status</SelectItem>
+              <SelectItem value="Done">Done</SelectItem>
+              <SelectItem value="Pending">Pending</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
 
-        <div className="flex gap-2 w-1/3">
+        <div className="flex gap-2 w-full md:w-1/2">
           <input
             type="number"
             placeholder="Min Amount"
@@ -129,7 +131,7 @@ export default function UserTable() {
           No users found.
         </div>
       ) : (
-        <div className="overflow-hidden border border-gray-600 rounded-xl">
+        <div className="overflow-hidden border-[0.5px] border-[#5f636950] rounded-xl">
           {/* Scrollable Table Container */}
           <div className="max-h-[500px] overflow-auto scrollbar-hide relative">
             <table className="w-full border-collapse">
@@ -159,7 +161,10 @@ export default function UserTable() {
               {/* Table Body */}
               <tbody>
                 {filteredUsers.map((user) => (
-                  <tr key={user.id} className="border-b border-gray-700">
+                  <tr
+                    key={user.id}
+                    className=" border-b-[0.5px] border-[#5f636950]"
+                  >
                     <td className="p-3">{user.id}</td>
                     <td className="p-3">{user.name}</td>
                     <td className="p-3">{user.email}</td>
@@ -176,7 +181,7 @@ export default function UserTable() {
                     <td className="p-3">{user.location}</td>
                     <td className="p-3 text-right">
                       <button className="bg-gray-800 text-gray-200 hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md">
-                      <Eye />
+                        <Eye />
                       </button>
                     </td>
                   </tr>

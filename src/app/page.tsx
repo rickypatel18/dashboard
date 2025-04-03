@@ -2,9 +2,8 @@
 
 import { redirect, useRouter } from "next/navigation";
 
-const router = useRouter();
-
 export default function Home() {
-  router.push("/dashboard/crm");
+  const router = useRouter();
+  router.push("/dashboard");
   // redirect("/dashboard/crm"); //if serverside
 }

@@ -71,8 +71,9 @@ const Header = ({
     <>
       {/* Search Drawer */}
       <div
-        className={`fixed top-0 left-1/2 transform -translate-x-1/2 w-full h-fit max-w-2xl bg-[#1a1919] transition-all duration-500 overflow-hidden flex items-start justify-center z-20 ${isSearchOpen ? "h-[30vh] opacity-100" : "h-0 opacity-0"
-          }`}
+        className={`fixed top-0 left-1/2 transform -translate-x-1/2 w-full h-fit max-w-2xl bg-[#1a1919] transition-all duration-100 overflow-hidden flex items-start justify-center z-20 ${
+          isSearchOpen ? "h-[30vh] opacity-100" : "h-0 opacity-0"
+        }`}
         ref={searchBoxRef}
       >
         {isSearchOpen && (
@@ -102,12 +103,13 @@ const Header = ({
 
       {/* Main Header */}
       <div
-        className={`fixed px-4 border-[0.5px] border-[#f5e9e9] dark:border-[0.5px] dark:border-[#5f636950] top-0 transition-all duration-100 bg-[#fff] dark:bg-[#110f0f] h-14 lg:h-16 flex items-center justify-between left-0 lg:left-20 w-full z-10 ${isSidebarExpanded
+        className={`fixed px-4  top-0 transition-all duration-100 bg-[#110f0f] h-14 lg:h-16 flex items-center justify-between left-0 lg:left-20 w-full z-10 ${
+          isSidebarExpanded
             ? "lg:left-64 lg:w-[calc(100%-16rem)]"
             : "lg:left-20 lg:w-[calc(100%-5rem)]"
-          }`}
+        }`}
       >
-        <div className="flex flex-row gap-2">
+        <div className="flex flex-row gap-2 text-white">
           <div className="flex w-fit h-8 lg:hidden">
             <img src="/logo.svg" alt="Logo" width={30} height={30} />
             {isSidebarExpanded && <div className="text-2xl pb-2">gnext</div>}
@@ -119,38 +121,38 @@ const Header = ({
           </button>
         </div>
 
-        <div className="flex gap-3 lg:gap-10 items-center justify-center">
+        <div className="flex gap-3 lg:gap-10 items-center justify-center text-white">
           {/* Search Icon */}
           <button
             onClick={() => setIsSearchOpen(true)}
             className="relative flex items-center justify-center cursor-pointer w-fit"
           >
-            <Search className="w-5 lg:w-7 dark:text-white " />
+            <Search className="w-5 lg:w-7" />
           </button>
 
           {/* Select Dropdown */}
-          <div className="relative flex items-center justify-center cursor-pointer w-fit">
+          <div className="relative flex items-center justify-center cursor-pointer w-fit text-white">
             <ChangeLanguage />
           </div>
 
           {/* Theme Toggle */}
-          <div className="relative flex items-center justify-center cursor-pointer w-fit">
+          <div className="relative flex items-center justify-center cursor-pointer w-fit text-white">
             <ThemeToggle />
           </div>
 
           {/* Notifications and Settings */}
-          <div className="relative hidden  lg:flex items-center justify-center cursor-pointer w-fit">
+          <div className="relative hidden  lg:flex items-center justify-center cursor-pointer w-fit text-white">
             <Bell />
           </div>
 
           {/* userProfile  */}
-          <div className="relative flex items-center justify-center cursor-pointer w-fit ">
+          <div className="relative flex items-center justify-center cursor-pointer w-fit text-white">
             <UserMenu />
           </div>
 
           {/* Maximize Icon  */}
           <div
-            className="relative hidden lg:flex items-center justify-center cursor-pointer w-fit"
+            className="relative hidden lg:flex items-center justify-center cursor-pointer w-fit text-white"
             onClick={handleFullscreen}
           >
             {isFullscreen ? (
@@ -161,7 +163,7 @@ const Header = ({
           </div>
 
           {/* Settings Icon  */}
-          <div className="relative flex items-center justify-center cursor-pointer w-fit">
+          <div className="relative flex items-center justify-center cursor-pointer w-fit text-white">
             <Settings className="w-5 lg:w-7 animate-[spin_3s_linear_infinite]" />
           </div>
         </div>

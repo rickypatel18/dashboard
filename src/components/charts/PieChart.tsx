@@ -64,7 +64,7 @@ const renderActiveShape = (props: any, textColor: string) => {
         fill={fill}
         stroke={textColor}
         strokeWidth={2}
-        style={{ filter: "drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.2))" }}
+        style={{ filter: "drop-shadow(0px 4px 6px rgba(0, 0, 0, 0))" }}
       />
 
       {/* Outer Highlight Effect */}
@@ -121,8 +121,8 @@ const ChartPie = ({ data }: ChartPieProps) => {
   }, []);
 
   return (
-    <div className="flex justify-center items-center w-full h-full">
-      <PieChart width={500} height={390}>
+    <div className="flex justify-center items-center w-full h-full ">
+      <PieChart width={500} height={360}>
         <Pie
           activeIndex={activeIndex}
           activeShape={(props: any) => renderActiveShape(props, textColor)}  

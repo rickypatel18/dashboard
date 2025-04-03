@@ -67,7 +67,7 @@ const Sidebar = ({
   return (
     <div
       ref={sidebarRef}
-      className={`fixed left-0 flex flex-col justify-between h-screen bg-[#110f0f] text-white z-50 transition-all duration-300 ${
+      className={`fixed left-0 flex flex-col justify-between h-screen bg-[#110f0f] text-white z-50 transition-all duration-100 ${
         isExpanded || isHovered ? "w-64" : "w-20"
       }`}
       onMouseEnter={() => {

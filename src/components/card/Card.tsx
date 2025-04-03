@@ -2,7 +2,6 @@
 import { MoveRight, Users } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import TinyChart from "../charts/TinyChart";
-import Loader from "../loader/Loader";
 
 const Card = () => {
   const [data, setData] = useState<any>(null);
@@ -27,7 +26,9 @@ const Card = () => {
     fetchData();
   }, []);
 
-  if (loading) return <Loader/>;
+  if (loading) return  <div className="text-center text-lg font-medium text-gray-500 py-6 animate-pulse">
+  Loading...
+</div>;
   if (error) return <p className="text-red-500 text-center">Error: {error}</p>;
   if (!data) return null;
 
@@ -60,14 +61,14 @@ const Card = () => {
       {cardInfo.map((card) => {
         const values =
           data[card.key]?.map((item: any) => item[card.dataKey]) || [];
-          console.log(values);
+          // console.log(values);
           
         const percentageChange = calculatePercentageChange(values);
 
         return (
           <div
             key={card.key}
-            className="flex justify-between items-center bg-[var(--primary)] text-[var(--primary-foreground)] rounded-xl px-4 py-7 "
+            className="flex justify-between items-center text-[var(--primary-text)] bg-[var(--color-primary-foreground)] rounded-xl px-4 py-7 "
           >
             <div className="flex gap-3">
               <div className="p-2 rounded-full bg-amber-200 flex w-fit h-fit">

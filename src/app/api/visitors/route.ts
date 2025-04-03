@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   try {
     const data = [
-      { name: "Jan", Visitor: 3000 },
+      { name: "Jan", Visitor: 2800 },
       { name: "Feb", Visitor: 3000 },
       { name: "Mar", Visitor: 2000 },
       { name: "Apr", Visitor: 2780 },

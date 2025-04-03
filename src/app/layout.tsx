@@ -1,6 +1,6 @@
 "use client";
-import { Roboto , Barlow} from "next/font/google";
 
+import { Roboto , Barlow} from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { useState, useEffect } from "react";
@@ -19,7 +19,7 @@ const barlow = Barlow({
   weight: ["400", "500", "700"],
 });
 
-export default function RootLayout({
+export default function RootLayout({  
   children,
 }: {
   children: React.ReactNode;
@@ -55,7 +55,7 @@ export default function RootLayout({
                   isSidebarExpanded={isSidebarExpanded}
                   toggleSidebar={toggleSidebar}
                 />
-                <main className="mt-16 px-0 py-4 lg:px-6 xl:px-8 2xl:px-10 w-full text-[var(--foreground)] bg-[var(--background)] min-h-[calc(100vh-5rem)]">
+                <main className="mt-12 px-0 py-4 lg:px-6 lg:py-6 xl:py-8 xl:px-8 2xl:px-10  2xl:py-10 w-full text-[var(--foreground)] bg-[var(--primary-background)] min-h-[calc(100vh-5rem)]">
                   {children}
                 </main>
               </div>

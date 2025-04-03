@@ -20,19 +20,19 @@ interface User {
 const usersData: User[] = [
   { id: 1, name: "Alice Johnson", email: "alice@example.com", role: "Admin" },
   { id: 2, name: "Bob Smith", email: "bob@example.com", role: "Manager" },
-  { id: 3, name: "Charlie Brown", email: "charlie@example.com", role: "User" },
-  { id: 4, name: "Diana Prince", email: "diana@example.com", role: "User" },
+  { id: 3, name: "Charlie Brown", email: "charlie@example.com", role: "Lead" },
+  { id: 4, name: "Diana Prince", email: "diana@example.com", role: "Lead" },
   { id: 5, name: "Edward Stark", email: "edward@example.com", role: "Manager" },
   { id: 6, name: "Bob Smith", email: "bob@example.com", role: "Manager" },
-  { id: 7, name: "Charlie Brown", email: "charlie@example.com", role: "User" },
-  { id: 8, name: "Diana Prince", email: "diana@example.com", role: "User" },
+  { id: 7, name: "Charlie Brown", email: "charlie@example.com", role: "Lead" },
+  { id: 8, name: "Diana Prince", email: "diana@example.com", role: "Lead" },
   { id: 9, name: "Edward Stark", email: "edward@example.com", role: "Manager" },
   { id: 10, name: "Bob Smith", email: "bob@example.com", role: "Manager" },
-  { id: 11, name: "Charlie Brown", email: "charlie@example.com", role: "User" },
-  { id: 12, name: "Diana Prince", email: "diana@example.com", role: "User" },
+  { id: 11, name: "Charlie Brown", email: "charlie@example.com", role: "Lead" },
+  { id: 12, name: "Diana Prince", email: "diana@example.com", role: "Lead" },
   { id: 13, name: "Bob Smith", email: "bob@example.com", role: "Manager" },
-  { id: 14, name: "Charlie Brown", email: "charlie@example.com", role: "User" },
-  { id: 15, name: "Diana Prince", email: "diana@example.com", role: "User" },
+  { id: 14, name: "Charlie Brown", email: "charlie@example.com", role: "Lead" },
+  { id: 15, name: "Diana Prince", email: "diana@example.com", role: "Lead" },
 ];
 
 export default function LeadTable() {
@@ -60,10 +60,7 @@ export default function LeadTable() {
   );
 
   return (
-    <div className="w-full  mx-auto p-4 flex flex-col gap-5  rounded-xl  h-auto">
-      <div>
-        <h2 className="text-xl text-center font-bold ">Lead Detail</h2>
-      </div>
+    <div className="w-full  mx-auto p-4 flex flex-col gap-5 rounded-xl h-auto">
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
         <input

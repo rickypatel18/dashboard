@@ -27,10 +27,10 @@ const growthData = [
 ];
 
 const progressData = [
-  { label: "Task 1", value: 110, max: 150, color: "bg-blue-500" },
+  { label: "Task 1", value: 106, max: 150, color: "bg-blue-500" },
   { label: "Task 2", value: 1379, max: 3000, color: "bg-green-500" },
-  { label: "Task 3", value: 428, max: 545, color: "bg-yellow-500" },
-  { label: "Task 4", value: 589, max: 800, color: "bg-red-500" },
+  { label: "Task 3", value: 328, max: 545, color: "bg-yellow-500" },
+  { label: "Task 4", value: 489, max: 800, color: "bg-red-500" },
 ];
 
 const PieChartData = [
@@ -48,21 +48,27 @@ const averagePercentage = (
 const page = () => {
   return (
     <div className="flex flex-col gap-10 p-4 ">
-      <div className="chart">
+      <div className="chart flex flex-col text-[var(--primary-text)] bg-[var(--color-primary-foreground)] rounded-xl">
+        <h2 className="text-xl font-semibold text-center text-[var(--color-secondary)] py-2">
+          Monthly Visitor{" "}
+        </h2>
         <MonthlyUserChart />
       </div>
 
-      <div className="cards">
+      <div className="cards ">
         <Card />
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-[59%_39%] xl:grid-cols-[59%_39%] lg:gap-5 xl:gap-6 2xl:gap-8  ">
+      <div className="grid grid-cols-1 lg:grid-cols-[59%_39%] xl:grid-cols-[59%_39%] gap-4 lg:gap-5 xl:gap-6 2xl:gap-8  ">
         {/* First Column (Stacked Lead Table & Profit Revenue Chart) */}
         <div className="flex flex-col gap-6">
-          <div className="table-layout bg-[var(--primary)] text-[var(--primary-foreground)] rounded-xl flex justify-center items-center">
+          <div className="table-layout  text-[var(--primary-text)] bg-[var(--color-primary-foreground)] rounded-xl flex flex-col justify-center items-center">
+            <h2 className="text-xl font-semibold text-[var(--color-secondary)] py-2">
+              Lead Details{" "}
+            </h2>
             <LeadTable />
           </div>
-          <div className="bg-[var(--primary)] text-[var(--primary-foreground)] rounded-xl flex flex-col justify-center items-center py-5 h-[600px]">
-            <h2 className="text-xl font-semibold">
+          <div className="text-[var(--primary-text)] bg-[var(--color-primary-foreground)] rounded-xl flex flex-col justify-center items-center  h-[600px]">
+            <h2 className="text-xl font-semibold text-[var(--color-secondary)] py-2">
               Profit revenue{" "}
             </h2>
             <ProfitRevenueChart
@@ -74,17 +80,24 @@ const page = () => {
 
         {/* Second Column (Three Elements in One Row) */}
         <div className="grid grid-cols-1 gap-4">
-          <div className="bg-[var(--primary)] text-[var(--primary-foreground)] rounded-xl justify-center flex flex-col items-center py-5 px-3">
-            <h2 className="text-xl font-semibold ">User Growth</h2>
+          <div className="text-[var(--primary-text)] bg-[var(--color-primary-foreground)] rounded-xl justify-center flex flex-col items-center px-3">
+            <h2 className="text-xl font-semibold text-[var(--color-secondary)] py-2">
+              User Growth
+            </h2>
             <CircularProgress percentage={Number(averagePercentage)} />
             <MultiProgressBars progressData={progressData} />
           </div>
-          <div className="bg-[var(--primary)] text-[var(--primary-foreground)] py-5 rounded-xl flex flex-col justify-center items-center">
-            <h2 className="text-xl font-semibold"> Pie chart</h2>
+          <div className="text-[var(--primary-text)] bg-[var(--color-primary-foreground)]  rounded-xl flex flex-col justify-center items-center">
+            <h2 className="text-xl font-semibold text-[var(--color-secondary)] py-2">
+              {" "}
+              Pie chart
+            </h2>
             <ChartPie data={PieChartData} />
           </div>
-          <div className="bg-[var(--primary)] text-[var(--primary-foreground)] rounded-xl flex flex-col justify-center py-5 items-center w-full">
-            <h2 className="text-xl font-semibold ">Area chart</h2>
+          <div className="text-[var(--primary-text)] bg-[var(--color-primary-foreground)] rounded-xl flex flex-col justify-center  items-center w-full">
+            <h2 className="text-xl font-semibold text-[var(--color-secondary)] py-2">
+              Area chart
+            </h2>
             <GrowthChart
               data={growthData}
               strokeColor=" #00f2fe"
@@ -94,7 +107,10 @@ const page = () => {
         </div>
       </div>
 
-      <div className="table-layout bg-[var(--primary)] text-[var(--primary-foreground)] rounded-xl ">
+      <div className="table-layout text-[var(--primary-text)] bg-[var(--color-primary-foreground)] rounded-xl ">
+        <h2 className="text-xl font-bold text-center text-[var(--color-secondary)] py-2">
+          Users List
+        </h2>
         <UserTable />
       </div>
     </div>

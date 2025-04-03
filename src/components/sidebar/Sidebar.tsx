@@ -23,8 +23,10 @@ const menu = [
     icon: <LayoutDashboard />,
     submenu: [
       { value: "CRM" },
-      { value: "E-Commerce" },
-      { value: "Sales" },
+      { value: "Login" },
+      { value: "Sign Up" },
+      { value: "ResetPassword" },
+      { value: "ForgotPassword" },
       {
         value: "Crypto",
         submenu: [
@@ -37,7 +39,6 @@ const menu = [
         value: "Stocks",
         submenu: [{ value: "MRF" }, { value: "Tata" }, { value: "Adani" }],
       },
-      { value: "Courses" },
     ],
   },
   {
