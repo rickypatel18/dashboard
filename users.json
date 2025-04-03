@@ -1,18 +1,9 @@
 [
+  {},
   {
-    "email": "ricky184@gmail.com",
-    "password": "ricky",
-    "name": "bars",
-    "designation": "devloper",
-    "resetToken": "9bd14473718d53383792435c16608abe2ca2aff9ea2c69bdd144f53156739747",
-    "tokenExpiry": 1743680760961
-  },
-  {
-    "email": "ricky@gmail.com",
-    "password": "eicky",
-    "name": "ricky",
-    "designation": "deve",
-    "resetToken": "afw3qj28bs8",
-    "tokenExpiry": 1743682194284
+    "email": "q",
+    "password": "q",
+    "name": "q",
+    "designation": "q"
   }
 ]

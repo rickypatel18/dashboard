@@ -4,39 +4,40 @@ export async function GET() {
   try {
     const data = {
       customers: [
-        { months: "1-2", customer: 200 },
-        { months: "3-4", customer: 370 },
-        { months: "5-6", customer: 900 },
-        { months: "7-8", customer: 294 },
-        { months: "9-10", customer: 546 },
-        { months: "11-12", customer: 601 },
+        { months: "1-2", customer: 180 },
+        { months: "3-4", customer: 350 },
+        { months: "5-6", customer: 880 },
+        { months: "7-8", customer: 420 },
+        { months: "9-10", customer: 600 },
+        { months: "11-12", customer: 720 },
       ],
       orders: [
-        { months: "1-2", order: 4908 },
-        { months: "3-4", order: 3800 },
-        { months: "5-6", order: 4800 },
-        { months: "7-8", order: 4200 },
-        { months: "9-10", order: 3708 },
-        { months: "11-12", order: 3500 },
+        { months: "1-2", order: 5100 },
+        { months: "3-4", order: 3900 },
+        { months: "5-6", order: 4700 },
+        { months: "7-8", order: 4600 },
+        { months: "9-10", order: 3800 },
+        { months: "11-12", order: 3400 },
       ],
       revenue: [
-        { months: "1-2", revenue: 6900 },
-        { months: "3-4", revenue: 4498 },
-        { months: "5-6", revenue: 3500 },
-        { months: "7-8", revenue: 3708 },
-        { months: "9-10", revenue: 3908 },
-        { months: "11-12", revenue: 5000 },
+        { months: "1-2", revenue: 7400 },
+        { months: "3-4", revenue: 4800 },
+        { months: "5-6", revenue: 3600 },
+        { months: "7-8", revenue: 4100 },
+        { months: "9-10", revenue: 4400 },
+        { months: "11-12", revenue: 5500 },
       ],
       profits: [
-        { months: "1-2", profit: 3708 },
-        { months: "3-4", profit: 3908 },
-        { months: "5-6", profit: 6900 },
-        { months: "7-8", profit: 4100 },
-        { months: "9-10", profit: 4908 },
-        { months: "11-12", profit: 4100 },
+        { months: "1-2", profit: 4200 },
+        { months: "3-4", profit: 4400 },
+        { months: "5-6", profit: 7300 },
+        { months: "7-8", profit: 4600 },
+        { months: "9-10", profit: 5100 },
+        { months: "11-12", profit: 4500 },
       ],
     };
-
+    
+    
     return NextResponse.json(data);
   } catch (err: unknown) {
     const errorMessage = err instanceof Error ? err.message : "Unknown error";

@@ -33,16 +33,12 @@ const Card = () => {
   if (!data) return null;
 
   const cardInfo = [
-    {
-      title: "Customers",
-      key: "customers",
-      dataKey: "customer",
-      color: "#8884d8",
-    },
-    { title: "Orders", key: "orders", dataKey: "order", color: "#82ca9d" },
-    { title: "Revenue", key: "revenue", dataKey: "revenue", color: "#ffc658" },
-    { title: "Profits", key: "profits", dataKey: "profit", color: "#ff7300" },
+    { title: "Customers", key: "customers", dataKey: "customer", color: "#6A5ACD" }, // Slate Blue
+    { title: "Orders", key: "orders", dataKey: "order", color: "#2ECC71" }, // Green
+    { title: "Revenue", key: "revenue", dataKey: "revenue", color: "#F1C40F" }, // Yellow
+    { title: "Profits", key: "profits", dataKey: "profit", color: "#E74C3C" }, // Red
   ];
+  
 
   // Function to calculate percentage change
   const calculatePercentageChange = (values: number[]) => {
@@ -97,8 +93,8 @@ const Card = () => {
                 <p
                   className={`text-md lg:text-lg ${
                     parseFloat(percentageChange) >= 0
-                      ? "text-green-500"
-                      : "text-red-500"
+                      ? "text-green-600"
+                      : "text-red-600"
                   }`}
                 >
                   {percentageChange}%

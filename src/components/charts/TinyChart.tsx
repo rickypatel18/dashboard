@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { LineChart, Line, XAxis } from "recharts";
+import { LineChart, Line } from "recharts";
 
 interface TinyChartProps {
   data: any[];
