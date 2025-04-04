@@ -11,7 +11,8 @@ export function ThemeToggle() {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null; // Prevent hydration mismatch
+  if (!mounted)
+    return <div className="w-5 h-5 animate-pulse bg-gray-300 rounded-full" />;
 
   return (
     <button
@@ -21,9 +22,8 @@ export function ThemeToggle() {
       {theme === "dark" ? (
         <Sun className="w-5 lg:w-7 text-yellow-200" />
       ) : (
-        <Moon className="w-5 lg:w-7  " />
+        <Moon className="w-5 lg:w-7 text-gray-200" />
       )}
     </button>
   );
 }
-  

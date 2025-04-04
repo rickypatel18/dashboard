@@ -62,7 +62,7 @@ export default function LeadTable() {
   return (
     <div className="w-full  mx-auto p-4 flex flex-col gap-5 rounded-xl h-auto">
       {/* Header */}
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between gap-2 items-center mb-4">
         <input
           type="text"
           placeholder="Search by name, email or role"
@@ -73,10 +73,13 @@ export default function LeadTable() {
 
         <Button
           variant="secondary"
-          className="p-2 rounded-lg border border-gray-300 bg-white text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-gray-100 focus:outline-none focus:ring-0 focus:border-transparent transition-colors"
+          className="w-1/2 lg:w-1/3 p-2 rounded-lg border border-gray-300 bg-white text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-gray-100 focus:outline-none focus:ring-0 focus:border-transparent transition-colors"
           onClick={handleSort}
         >
-          Sort by Name {sortOrder === "asc" ? <ChevronUp /> : <ChevronDown />}
+          <div className="flex text-center justify-between  w-full">
+            <p>Sort by Name</p>
+            <span>{sortOrder === "asc" ? <ChevronUp /> : <ChevronDown />}</span>
+          </div>
         </Button>
       </div>
 

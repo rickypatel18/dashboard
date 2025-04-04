@@ -26,7 +26,6 @@ const ProgressBar = ({
 
   return (
     <div className="w-full space-y-2">
-      {/* Label */}
       <div className="flex justify-between text-sm font-medium text-gray-300">
         <span>{label}</span>
         <span className="text-gray-400">
@@ -57,8 +56,8 @@ const MultiProgressBars = ({
 }) => {
   return (
     <div className="w-full max-w-md mx-auto p-5 rounded-xl space-y-5">
-      <h2 className="text-xl font-bold text-white text-center">
-        Progress Overview
+      <h2 className=" text-xl font-semibold text-center text-[var(--color-secondary)] py-2">
+       Task Progress Overview
       </h2>
       {progressData.map((item, index) => (
         <ProgressBar key={index} {...item} />

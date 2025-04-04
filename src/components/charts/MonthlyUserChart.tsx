@@ -20,12 +20,10 @@ interface MonthlyUserChartProps {
 
 const MonthlyUserChart: React.FC<MonthlyUserChartProps> = ({
   apiUrl = "/api/visitors",
-  barColor = "#4facfe",
   gradientId = "barGradient",
 }) => {
   const { theme } = useTheme();
   const isDarkMode = theme === "dark";
-
   const [chartData, setChartData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -34,7 +32,6 @@ const MonthlyUserChart: React.FC<MonthlyUserChartProps> = ({
     barCategoryGap: 15,
   });
 
-  // Fetch data from API
   useEffect(() => {
     async function fetchData() {
       try {
@@ -56,21 +53,21 @@ const MonthlyUserChart: React.FC<MonthlyUserChartProps> = ({
     fetchData();
   }, [apiUrl]);
 
-  // Handle responsive spacing
-  useEffect(() => {
-    function updateSpacing() {
-      if (typeof window !== "undefined") {
-        setBarSpacing(
-          window.innerWidth < 640
-            ? { barGap: 5, barCategoryGap: 5 }
-            : { barGap: 15, barCategoryGap: 20 }
-        );
-      }
-    }
-    updateSpacing();
-    window.addEventListener("resize", updateSpacing);
-    return () => window.removeEventListener("resize", updateSpacing);
-  }, []);
+  // // Handle responsive spacing
+  // useEffect(() => {
+  //   function updateSpacing() {
+  //     if (typeof window !== "undefined") {
+  //       setBarSpacing(
+  //         window.innerWidth < 640
+  //           ? { barGap: 5, barCategoryGap: 5 }
+  //           : { barGap: 15, barCategoryGap: 20 }
+  //       );
+  //     }
+  //   }
+  //   updateSpacing();
+  //   window.addEventListener("resize", updateSpacing);
+  //   return () => window.removeEventListener("resize", updateSpacing);
+  // }, []);
 
   if (loading)
     return (

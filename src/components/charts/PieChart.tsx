@@ -96,7 +96,7 @@ const renderActiveShape = (props: any, textColor: string) => {
         fontSize={12}
         fill="#A1A1AA"
       >
-        {`Value: ${value}`}
+        {`Sell : ${value}`}
       </text>
       <text
         x={ex + (cos >= 0 ? 6 : -6)}

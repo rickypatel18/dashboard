@@ -26,19 +26,26 @@ const Card = () => {
     fetchData();
   }, []);
 
-  if (loading) return  <div className="text-center text-lg font-medium text-gray-500 py-6 animate-pulse">
-  Loading...
-</div>;
+  if (loading)
+    return (
+      <div className="text-center text-lg font-medium text-gray-500 py-6 animate-pulse">
+        Loading...
+      </div>
+    );
   if (error) return <p className="text-red-500 text-center">Error: {error}</p>;
   if (!data) return null;
 
   const cardInfo = [
-    { title: "Customers", key: "customers", dataKey: "customer", color: "#6A5ACD" }, // Slate Blue
+    {
+      title: "Customers",
+      key: "customers",
+      dataKey: "customer",
+      color: "#6A5ACD",
+    }, // Slate Blue
     { title: "Orders", key: "orders", dataKey: "order", color: "#2ECC71" }, // Green
     { title: "Revenue", key: "revenue", dataKey: "revenue", color: "#F1C40F" }, // Yellow
     { title: "Profits", key: "profits", dataKey: "profit", color: "#E74C3C" }, // Red
   ];
-  
 
   // Function to calculate percentage change
   const calculatePercentageChange = (values: number[]) => {
@@ -57,8 +64,7 @@ const Card = () => {
       {cardInfo.map((card) => {
         const values =
           data[card.key]?.map((item: any) => item[card.dataKey]) || [];
-          // console.log(values);
-          
+        // console.log(values);
         const percentageChange = calculatePercentageChange(values);
 
         return (
@@ -77,7 +83,10 @@ const Card = () => {
                     {values.reduce((acc: number, num: number) => acc + num, 0)}
                   </p>
                 </div>
-                <button className="flex justify-center items-center gap-2 text-md lg:text-lg">
+                {/* flex justify-center items-center gap-2 text-md lg:text-lg 
+             focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 
+             px-3 py-1 rounded-md transition */}
+                <button className=" flex justify-center items-center gap-2 text-md lg:text-lg ">
                   <p>View all</p>
                   <MoveRight className="w-4" />
                 </button>
@@ -89,7 +98,7 @@ const Card = () => {
                 dataKey={card.dataKey}
                 color={card.color}
               />
-              <div className="flex flex-col">
+              <div className="flex flex-col items-center">
                 <p
                   className={`text-md lg:text-lg ${
                     parseFloat(percentageChange) >= 0

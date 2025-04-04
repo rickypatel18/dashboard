@@ -88,7 +88,7 @@ export default function UserTable() {
               setFilters((prev) => ({ ...prev, status: value }))
             }
           >
-            <SelectTrigger className="w-1/3 lg:w-1/3 rounded-lg p-2 text-gray-900 bg-white border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-gray-100 focus:outline-none transition-colors">
+            <SelectTrigger className="w-1/2 lg:w-1/3 rounded-lg p-2 text-gray-900 bg-white border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-gray-100 focus:outline-none transition-colors">
               <SelectValue placeholder="Filter by Status" />
             </SelectTrigger>
             <SelectContent className="bg-white text-gray-900 dark:bg-gray-800 dark:text-gray-200">
@@ -99,7 +99,7 @@ export default function UserTable() {
           </Select>
         </div>
 
-        <div className="flex gap-2 w-full md:w-1/2">
+        <div className="flex gap-2 w-full justify-between items-center">
           <input
             type="number"
             placeholder="Min Amount"
@@ -107,7 +107,7 @@ export default function UserTable() {
             onChange={(e) =>
               setFilters((prev) => ({ ...prev, minAmount: e.target.value }))
             }
-            className="w-1/2 rounded-lg p-2 border border-gray-300 text-gray-900 bg-white dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-gray-100 focus:outline-none transition-colors"
+            className="w-1/2 lg:w-1/3 rounded-lg p-2 border border-gray-300 text-gray-900 bg-white dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-gray-100 focus:outline-none transition-colors"
           />
           <input
             type="number"
@@ -116,7 +116,7 @@ export default function UserTable() {
             onChange={(e) =>
               setFilters((prev) => ({ ...prev, maxAmount: e.target.value }))
             }
-            className="w-1/2 rounded-lg p-2 border border-gray-300 text-gray-900 bg-white dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-gray-100 focus:outline-none transition-colors"
+            className="w-1/2 lg:w-1/3 rounded-lg p-2 border border-gray-300 text-gray-900 bg-white dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-gray-100 focus:outline-none transition-colors"
           />
         </div>
       </div>

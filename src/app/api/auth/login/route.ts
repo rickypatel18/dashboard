@@ -16,9 +16,9 @@ function readUsers() {
 
 export async function POST(req: Request) {
   try {
-    const { email, password } = await req.json();
+    const { email, role, password } = await req.json();
 
-    if (!email || !password) {
+    if (!email || !role || !password) {
       return NextResponse.json(
         { message: "Email and password required." },
         { status: 400 }
@@ -27,7 +27,8 @@ export async function POST(req: Request) {
 
     const users = readUsers();
     const user = users.find(
-      (user: any) => user.email === email && user.password === password
+      (user: any) =>
+        user.email === email && user.role === role && user.password === password
     );
 
     if (!user) {
@@ -41,7 +42,15 @@ export async function POST(req: Request) {
     const { password: _, ...userWithoutPassword } = user;
 
     return NextResponse.json(
-      { message: "Login successful", user: userWithoutPassword },
+      {
+        message: "Login successful",
+        user: {
+          email: user.email,
+          name: user.name,
+          designation: user.designation,
+          role: user.role,
+        },
+      },
       { status: 200 }
     );
   } catch (error) {

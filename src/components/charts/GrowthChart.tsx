@@ -11,7 +11,7 @@ import {
 } from "recharts";
 
 interface ChartAreaProps {
-  data: { name: string; uv: number; pv: number; amt: number }[];
+  data: { name: string; net_profit: number }[];
   strokeColor?: string;
   fillColor?: string;
 }
@@ -36,6 +36,7 @@ const GrowthChart: React.FC<ChartAreaProps> = ({
               backgroundColor: "#1f2937",
               borderRadius: "8px",
               color: "#fff",
+              
             }}
           />
 
@@ -48,7 +49,7 @@ const GrowthChart: React.FC<ChartAreaProps> = ({
 
           <Area
             type="monotone"
-            dataKey="uv"
+            dataKey="net_profit"
             stroke={strokeColor}
             strokeWidth={2}
             fill="url(#colorUv)"

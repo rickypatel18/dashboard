@@ -54,7 +54,6 @@ const Header = ({
       setIsFullscreen(false);
     }
   };
-
   // Listen for fullscreen changes (handles `Esc` key exit)
   useEffect(() => {
     const handleFullscreenChange = () => {
@@ -116,7 +115,7 @@ const Header = ({
           </div>
 
           {/* Sidebar Toggle */}
-          <button onClick={toggleSidebar}>
+          <button onClick={toggleSidebar} className="cursor-pointer ">
             {isSidebarExpanded ? <X /> : <Menu />}
           </button>
         </div>

@@ -9,19 +9,30 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setTheme] = useState<ThemeType>("light");
+const getStoredTheme = (): ThemeType => {
+  if (typeof window !== null) {
+    return (localStorage.getItem("theme") as ThemeType) || "dark";
+  }
+  return "dark"; // Default theme is dark
+};
 
+export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+  const [theme, setTheme] = useState<ThemeType>(getStoredTheme);
+
+  // Apply theme on first render
   useEffect(() => {
-    const storedTheme = localStorage.getItem("theme") as ThemeType;
-    if (storedTheme) {
-      setTheme(storedTheme);
-    }
+    document.documentElement.classList.toggle("dark", theme === "dark");
   }, []);
 
   useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
+    } else {
+      document.documentElement.classList.add("light");
+      document.documentElement.classList.remove("dark");
+    }
     localStorage.setItem("theme", theme);
-    document.documentElement.classList.toggle("dark", theme === "dark");
   }, [theme]);
 
   return (

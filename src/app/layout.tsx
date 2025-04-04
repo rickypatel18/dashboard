@@ -1,25 +1,19 @@
 "use client";
 
-import { Roboto , Barlow} from "next/font/google";
+import { Barlow } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Header from "@/components/header/Header";
 import Sidebar from "@/components/sidebar/Sidebar";
 
-
-const roboto = Roboto({
-  variable: "--font-roboto",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-});
 const barlow = Barlow({
   variable: "--font-barlow",
   subsets: ["latin"],
   weight: ["400", "500", "700"],
 });
 
-export default function RootLayout({  
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -33,9 +27,12 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
-      <body className={`${barlow.variable} ${roboto.variable}  antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system">
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${barlow.variable}   antialiased`}
+        suppressHydrationWarning
+      >
+        <ThemeProvider attribute="class" defaultTheme="dark">
           <div className="flex min-h-screen">
             <>
               <Sidebar
@@ -65,4 +62,16 @@ export default function RootLayout({
       </body>
     </html>
   );
+}
+
+// this will be the reason to get this error of hydration mismatch
+
+// const [hydrated, setHydrated] = useState(false);
+// useEffect(() => {
+//   setHydrated(true);
+// }, []);
+// <html lang="en" suppressHydrationWarning>
+// <body className={`${hydrated ? barlow.variable : ""} antialiased`} suppressHydrationWarning>
+{
+  /* <ThemeProvider attribute="class" defaultTheme="dark" enableSystem> */
 }

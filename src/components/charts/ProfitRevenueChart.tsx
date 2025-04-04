@@ -13,8 +13,8 @@ import {
 } from "recharts";
 
 interface ChartProps {
-  data: { name: string; uv: number; pv: number; amt: number }[];
-  barColors?: { pv: string; uv: string };
+  data: { name: string; profit: number; revenue: number }[];
+  barColors?: { revenue: string; profit: string };
 }
 
 // Adjust label position to prevent cutoff
@@ -40,8 +40,8 @@ const CustomTooltip = ({ active, payload }: any) => {
     return (
       <div className="bg-gray-800 text-white text-sm px-3 py-1 rounded-xl ">
         <p className="font-semibold">{payload[0].payload.name}</p>
-        <p>UV: {payload[0].value}</p>
-        <p>PV: {payload[1].value}</p>
+        <p>profit: {payload[0].value}</p>
+        <p>revenue : {payload[1].value}</p>
       </div>
     );
   }
@@ -50,27 +50,39 @@ const CustomTooltip = ({ active, payload }: any) => {
 
 const ProfitRevenueChart: React.FC<ChartProps> = ({
   data,
-  barColors = { pv: "#8884d8", uv: "#4facfe" },
+  barColors = { revenue: "#8884d8", profit: "#4facfe" },
 }) => {
   return (
     <div className="w-full lg:pr-3  rounded-xl h-full">
       <ResponsiveContainer width="100%">
         <BarChart
           data={data}
-          margin={{ top: 50, right: 4, left: 0, bottom: 10 }} 
+          margin={{ top: 50, right: 4, left: 0, bottom: 10 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="#444" strokeOpacity={0.2} />
-          <XAxis dataKey="name" stroke="#bbb" tick={{ fill: "#bbb", fontSize: 12 }}/>
-          <YAxis stroke="#bbb" domain={["auto"]} tick={{ fill: "#bbb", fontSize: 12 }} /> 
+          <CartesianGrid
+            strokeDasharray="3 3"
+            stroke="#444"
+            strokeOpacity={0.2}
+          />
+          <XAxis
+            dataKey="name"
+            stroke="#bbb"
+            tick={{ fill: "#bbb", fontSize: 12 }}
+          />
+          <YAxis
+            stroke="#bbb"
+            domain={["auto"]}
+            tick={{ fill: "#bbb", fontSize: 12 }}
+          />
           <Tooltip
             content={<CustomTooltip />}
             cursor={{ fill: "transparent" }}
           />
           <Legend wrapperStyle={{ color: "#fff" }} />
-          <Bar dataKey="pv" fill={barColors.pv} radius={[8, 8, 0, 0]}>
-            <LabelList dataKey="pv" content={renderCustomizedLabel} />
+          <Bar dataKey="revenue" fill={barColors.revenue} radius={[8, 8, 0, 0]}>
+            <LabelList dataKey="revenue" content={renderCustomizedLabel} />
           </Bar>
-          <Bar dataKey="uv" fill={barColors.uv} radius={[8, 8, 0, 0]} />
+          <Bar dataKey="profit" fill={barColors.profit} radius={[8, 8, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

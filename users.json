@@ -1,9 +1,23 @@
 [
-  {},
   {
-    "email": "q",
-    "password": "q",
-    "name": "q",
-    "designation": "q"
+    "email": "e@gmail.com",
+    "password": "e",
+    "name": "e",
+    "role": "e",
+    "designation": "e"
+  },
+  {
+    "email": "f@gmail.com",
+    "password": "f",
+    "name": "f",
+    "role": "admin",
+    "designation": "f"
+  },
+  {
+    "email": "admin@gmail.com",
+    "password": "admin",
+    "name": "admin",
+    "role": "admin",
+    "designation": "admin lead"
   }
 ]

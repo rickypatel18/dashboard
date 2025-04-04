@@ -21,9 +21,9 @@ function writeUsers(users: any[]) {
 
 export async function POST(req: Request) {
   try {
-    const { email, password, name, designation } = await req.json();
+    const { email, password, name,role, designation } = await req.json();
 
-    if (!email || !password || !name || !designation) {
+    if (!email || !password || !name || !role || !designation) {
       return NextResponse.json(
         { message: "All fields are required." },
         { status: 400 }
@@ -40,7 +40,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const newUser = { email, password, name, designation };
+    const newUser = { email, password, name,role, designation };
     users.push(newUser);
     writeUsers(users);
 

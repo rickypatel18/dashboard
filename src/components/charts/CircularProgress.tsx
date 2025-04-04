@@ -69,7 +69,6 @@ const WaterProgress = ({
         </g>
       </svg>
 
-      {/* Percentage Display */}
       <div className="absolute  font-bold text-2xl">{percentage}%</div>
     </div>
   );

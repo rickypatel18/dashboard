@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 import React, { useState, useEffect, useRef } from "react";
 import {
   LayoutDashboard,
@@ -13,9 +13,6 @@ import {
   BookOpenCheck,
   PhoneOutgoing,
 } from "lucide-react";
-import { Avatar } from "../ui/avatar";
-import Image from "next/image";
-import { Button } from "../ui/button";
 
 const menu = [
   {
@@ -240,13 +237,13 @@ const Sidebar = ({
         if (!isManuallyExpanded) setIsHovered(false);
       }}
     >
-      <div className="">
-        <div className="h-16 flex justify-center items-center gap-2">
+      <div className="flex flex-col">
+      <button className="h-16 flex justify-center items-center gap-2 " onClick={() => redirect("/dashboard/crm")} >
           <img src="/logo.svg" alt="Logo" width={30} height={30} />
           {(isExpanded || isHovered) && (
             <div className="text-2xl pb-2">gnext</div>
           )}
-        </div>
+        </button>
         <div className="p-4 ">
           {menu.map((item, index) => (
             <div key={index} className="mb-2">

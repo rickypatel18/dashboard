@@ -53,14 +53,4 @@ export async function GET() {
 }
 
 
-// const users = [...new Array(limit)].map((_, i) => {
-//   const id = (page - 1) * limit + i + 1;
-//   return {
-//     id,
-//     name: `User ${id}`,
-//     email: `user${id}@mail.com`,
-//     amount: `$${(Math.random() * 1000).toFixed(2)}`,
-//     status: Math.random() > 0.5 ? "Active" : "Inactive",
-//     location: "New York",
-//   };
-// });
+
