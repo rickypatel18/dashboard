@@ -7,11 +7,6 @@ import {
   NotebookText,
   ChevronDown,
   ChevronRight,
-  ShieldUser,
-  NotebookTabs,
-  Wrench,
-  BookOpenCheck,
-  PhoneOutgoing,
 } from "lucide-react";
 import { Avatar } from "../ui/avatar";
 import Image from "next/image";
