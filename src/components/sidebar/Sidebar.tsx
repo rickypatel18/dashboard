@@ -22,8 +22,8 @@ const menu = [
       { value: "CRM" },
       { value: "Login" },
       { value: "Sign Up" },
-      { value: "ResetPassword" },
-      { value: "ForgotPassword" },
+      { value: "Login With Github" },
+      { value: "Login With google" },
       {
         value: "Crypto",
         submenu: [
