@@ -19,5 +19,26 @@
     "name": "admin",
     "role": "admin",
     "designation": "admin lead"
+  },
+  {
+    "email": "raju@gmail.com",
+    "password": "r",
+    "name": "r",
+    "role": "admin",
+    "designation": "r"
+  },
+  {
+    "email": "fisurizij@mailinator.com",
+    "password": "Pa$$w0rd!",
+    "name": "Azalia Guzman",
+    "role": "Velit in perspiciati",
+    "designation": "Consequatur sunt v"
+  },
+  {
+    "email": "betulac@mailinator.com",
+    "password": "Pa$$w0rd!",
+    "name": "Judah Scott",
+    "role": "admin",
+    "designation": "Nulla a mollitia dol"
   }
 ]
