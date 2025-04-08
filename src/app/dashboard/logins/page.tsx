@@ -3,7 +3,7 @@ import { signIn, auth, signOut } from "../../../../auth"
 
 export default async function SignIn() {
   const session = await auth();
-  console.log(session);
+  console.log({session});
 
   const user = session?.user;
 
@@ -36,7 +36,7 @@ export default async function SignIn() {
   ) : (
     <>
     <p>this is demo authentication using OAuth js</p>
-      <h1 className="text-xl">you are not authenticated , click below</h1> 
+      <h1 className="text-xl">you are not authenticated </h1> 
       <br />
       <form
         action={async () => {
