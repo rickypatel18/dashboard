@@ -14,8 +14,8 @@ export default async function SignIn() {
         <Image
           src={user?.image as string}
           alt="profile"
-          width={50}
-          height={50}
+          width={40}
+          height={40}
           style={{ borderRadius: "50%" }}
           priority
         />
