@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     turbo: {},
   },
   images: {
-    domains: ["imgv3.fotor.com", "avatars.githubusercontent.com"], // Add allowed image domains here
+    domains: ["imgv3.fotor.com", "avatars.githubusercontent.com","lh3.googleusercontent.com"], // Add allowed image domains here
   },
   webpack(config) {
     config.module.rules.push({

@@ -22,8 +22,7 @@ const menu = [
       { value: "CRM" },
       { value: "Login" },
       { value: "Sign Up" },
-      { value: "Login With Github" },
-      { value: "Login With google" },
+      { value: "Logins" },
       {
         value: "Crypto",
         submenu: [
