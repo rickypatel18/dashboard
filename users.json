@@ -40,5 +40,12 @@
     "name": "Judah Scott",
     "role": "admin",
     "designation": "Nulla a mollitia dol"
+  },
+  {
+    "email": "a@gmailcom",
+    "password": "a",
+    "name": "a",
+    "role": "admin",
+    "designation": "a"
   }
 ]

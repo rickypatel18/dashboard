@@ -6,6 +6,7 @@ import { ThemeProvider } from "next-themes";
 import { useState } from "react";
 import Header from "@/components/header/Header";
 import Sidebar from "@/components/sidebar/Sidebar";
+import ScrollContext from "@/context/ScrollContext";
 
 const barlow = Barlow({
   variable: "--font-barlow",
@@ -33,6 +34,9 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <ThemeProvider attribute="class" defaultTheme="dark">
+          <ScrollContext> 
+            {/* scroll context for somooth in scrolling */}
+
           <div className="flex min-h-screen">
             <>
               <Sidebar
@@ -58,6 +62,8 @@ export default function RootLayout({
               </div>
             </>
           </div>
+          </ScrollContext>
+
         </ThemeProvider>
       </body>
     </html>
