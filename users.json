@@ -47,5 +47,12 @@
     "name": "a",
     "role": "admin",
     "designation": "a"
+  },
+  {
+    "email": "ricky@gmail.com",
+    "password": "ricky",
+    "name": "Ricky",
+    "role": "admin",
+    "designation": "Frontend Dev"
   }
 ]
